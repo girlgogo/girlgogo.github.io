@@ -1,0 +1,806 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="@(前端开发学习)[极客学院]
+#第6章 中级前端开发工程师常用的库 – ReactJS
+[toc]
+##6.1 React 概述
+###6.1.1 什么是 React1、React 的开发背景Facebook 需要解决的问题：构建数据不断变化的大型应用。
+2、React 的特点
+
+简单：学习简单、代码简单
+声明式：自动 DOM 操作
+
+React 的核心是组件，组件的设计目的是提高代码复用率、降">
+<meta property="og:type" content="article">
+<meta property="og:title" content="girlgogo">
+<meta property="og:url" content="https://girlgogo.github.io/2017/03/13/JK-JS-React/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="@(前端开发学习)[极客学院]
+#第6章 中级前端开发工程师常用的库 – ReactJS
+[toc]
+##6.1 React 概述
+###6.1.1 什么是 React1、React 的开发背景Facebook 需要解决的问题：构建数据不断变化的大型应用。
+2、React 的特点
+
+简单：学习简单、代码简单
+声明式：自动 DOM 操作
+
+React 的核心是组件，组件的设计目的是提高代码复用率、降">
+<meta property="og:image" content="https://girlgogo.github.io/./1477901068702.png">
+<meta property="og:image" content="https://girlgogo.github.io/./1478412272791.png">
+<meta property="og:image" content="https://girlgogo.github.io/./1478413484070.png">
+<meta property="og:image" content="https://girlgogo.github.io/./1478417191152.png">
+<meta property="og:updated_time" content="2017-03-13T15:29:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="girlgogo">
+<meta name="twitter:description" content="@(前端开发学习)[极客学院]
+#第6章 中级前端开发工程师常用的库 – ReactJS
+[toc]
+##6.1 React 概述
+###6.1.1 什么是 React1、React 的开发背景Facebook 需要解决的问题：构建数据不断变化的大型应用。
+2、React 的特点
+
+简单：学习简单、代码简单
+声明式：自动 DOM 操作
+
+React 的核心是组件，组件的设计目的是提高代码复用率、降">
+<meta name="twitter:image" content="https://girlgogo.github.io/./1477901068702.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/03/13/JK-JS-React/"/>
+
+
+
+
+
+  <title>  | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/03/13/JK-JS-React/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T23:29:06+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@(前端开发学习)[极客学院]</p>
+<p>#第6章 中级前端开发工程师常用的库 – ReactJS</p>
+<p>[toc]</p>
+<p>##6.1 React 概述</p>
+<p>###6.1.1 什么是 React<br>1、React 的开发背景<br>Facebook 需要解决的问题：构建数据不断变化的大型应用。<br><img src="./1477901068702.png" alt="Alt text"></p>
+<p>2、React 的特点</p>
+<ul>
+<li>简单：学习简单、代码简单</li>
+<li>声明式：自动 DOM 操作</li>
+</ul>
+<p>React 的核心是<strong>组件</strong>，组件的设计目的是<code>提高代码复用率</code>、<code>降低测试难度</code>和<code>代码复杂度</code>.</p>
+<ul>
+<li><p><strong>提高代码复用率</strong>：组件将<code>数据和逻辑封装</code>，类似面向对象中的类</p>
+</li>
+<li><p><strong>降低测试难度</strong>：组件<code>高内聚低耦合</code>，很容易对单个组件进行测试。</p>
+</li>
+<li><p><strong>降低代码复杂度</strong>：<code>直观的语法</code>可以极大提高可读性。</p>
+</li>
+</ul>
+<p>3、React 的发展过程<br>2013年6月，Facebook 官方发布 React<br>2013年9月，React 热度开始上涨<br>2015年3月，React Native 发布</p>
+<p>###6.1.2 React开发环境搭建<br>1、常用的编辑器及插件的配置</p>
+<ul>
+<li>编辑器：CodeKit，Sublime Text2/3，TextMate，Notepad++，Emacs，Vim，记事本……</li>
+<li>插件：Emmet，HTML-CSS-JS Prettify，Spacegray模板</li>
+<li>环境：Node.js</li>
+</ul>
+<p>2、Emmet 语法介绍：</p>
+<ul>
+<li><p>子代：<code>&gt;</code> </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">缩写：nav&gt;ul&gt;li</div><div class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>兄弟：<code>+</code>  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">缩写：div+p+bq</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>父代：<code>^</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">缩写：div+div&gt;p&gt;span+em^bq</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">blockquote</span>&gt;</span><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">缩写：div+div&gt;p&gt;span+em^^bq</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>分组：<code>()</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">缩写：(div&gt;dl&gt;(dt+dd)*3)+footer&gt;p</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>重复：<code>*</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">缩写：ul&gt;li*5</div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>自增符号：<code>$</code></p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">缩写：h$[<span class="built_in">title</span>=item$]&#123;<span class="built_in">Header</span> $&#125;*<span class="number">3</span></div><div class="line">&lt;h1 <span class="built_in">title</span>=<span class="string">"item1"</span>&gt;<span class="built_in">Header</span> <span class="number">1</span>&lt;/h1&gt;</div><div class="line">&lt;h2 <span class="built_in">title</span>=<span class="string">"item2"</span>&gt;<span class="built_in">Header</span> <span class="number">2</span>&lt;/h2&gt;</div><div class="line">&lt;h3 <span class="built_in">title</span>=<span class="string">"item3"</span>&gt;<span class="built_in">Header</span> <span class="number">3</span>&lt;/h3&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">缩写：ul&gt;li.item$$$*<span class="number">5</span></div><div class="line">&lt;ul&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item001"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item002"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item003"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item004"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item005"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">&lt;<span class="regexp">/ul&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">缩写：ul&gt;li.item$@-*<span class="number">5</span></div><div class="line">&lt;ul&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item5"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item4"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item3"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item2"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item1"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">&lt;<span class="regexp">/ul&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">缩写：ul&gt;li.item$@<span class="number">3</span>*<span class="number">5</span></div><div class="line">&lt;ul&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item3"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item4"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item5"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item6"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"item7"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">&lt;<span class="regexp">/ul&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>ID和类属性 ：<code>#</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">缩写：form<span class="selector-id">#search</span><span class="selector-class">.wide</span></div><div class="line">&lt;<span class="selector-tag">form</span> id=<span class="string">"search"</span> class=<span class="string">"wide"</span>&gt;&lt;/form&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义属性：<code>[]</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">缩写：<span class="selector-tag">p</span>[title=<span class="string">"Hello world"</span>]</div><div class="line">&lt;<span class="selector-tag">p</span> title=<span class="string">"Hello world"</span>&gt;&lt;/p&gt;</div><div class="line"></div><div class="line">缩写：<span class="selector-tag">td</span>[rowspan=<span class="number">2</span> colspan=<span class="number">3</span> title]</div><div class="line">&lt;<span class="selector-tag">td</span> rowspan=<span class="string">"2"</span> colspan=<span class="string">"3"</span> title=<span class="string">""</span>&gt;&lt;/td&gt;</div><div class="line"></div><div class="line">缩写：[a=<span class="string">'value1'</span> b=<span class="string">"value2"</span>]</div><div class="line">&lt;<span class="selector-tag">div</span> a=<span class="string">"value1"</span> b=<span class="string">"value2"</span>&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>文本：<code>{}</code></p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="xml">缩写：a</span><span class="template-variable">&#123;Click me&#125;</span><span class="xml"></span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>隐式标签</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">缩写：<span class="selector-class">.class</span></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"class"</span>&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">缩写：em&gt;<span class="selector-class">.class</span></div><div class="line">&lt;em&gt;&lt;<span class="selector-tag">span</span> class=<span class="string">"class"</span>&gt;&lt;/span&gt;&lt;/em&gt;</div><div class="line"></div><div class="line">缩写：ul&gt;<span class="selector-class">.class</span></div><div class="line">&lt;ul&gt;</div><div class="line">    &lt;<span class="selector-tag">li</span> class=<span class="string">"class"</span>&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">缩写：table&gt;.row&gt;<span class="selector-class">.col</span></div><div class="line">&lt;table&gt;</div><div class="line">    &lt;<span class="selector-tag">tr</span> class=<span class="string">"row"</span>&gt;</div><div class="line">        &lt;<span class="selector-tag">td</span> class=<span class="string">"col"</span>&gt;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div><div class="line">``` </div><div class="line"><span class="number">3</span>、使用浏览器查看效果</div><div class="line">React 的浏览器兼容性-- IE8 以上</div><div class="line"></div><div class="line">###<span class="number">6.1</span>.<span class="number">3</span> 编写一个 React 程序</div><div class="line"><span class="number">1</span>、React 程序结构介绍</div><div class="line">![Alt text](./<span class="number">1477924159604</span>.png)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><body><br>    <div id="screen"></div><br>    <script src="./react-15.3.1/build/react.js"></script><br>    <script src="./react-15.3.1/build/react-dom.js"></script><br>    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script><br>    <script type="text/babel"><br>        var HelloWorld = React.createClass({<br>            render:function(){<br>                return <p>Hello,World</p><br>            }<br>        });<br>        ReactDOM.render(<HelloWorld></HelloWorld>, document.getElementById(‘screen’));<br>    </script><br></body><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="section">##6.2 JS 语法及特点介绍</span></div><div class="line"><span class="section">###6.2.1 什么是 JSX</span></div><div class="line">&gt;JSX = <span class="strong">**J**</span>ava<span class="strong">**S**</span>cript <span class="strong">**X**</span>ML</div><div class="line"></div><div class="line"><span class="strong">**JSX 是：**</span></div><div class="line"><span class="bullet">- </span>基于 ECMAScript 的一种<span class="code">`新特性`</span></div><div class="line"><span class="bullet">- </span>一种定义带属性树结构的<span class="code">`语法`</span></div><div class="line"></div><div class="line"><span class="strong">**JSX 不是：**</span></div><div class="line"><span class="bullet">- </span>XML 或者 HTML </div><div class="line"><span class="bullet">- </span>一种限制</div><div class="line"></div><div class="line"><span class="strong">**JSX 的特点**</span></div><div class="line">![<span class="string">Alt text</span>](<span class="link">./1477977871273.png</span>)</div><div class="line"></div><div class="line"><span class="section">###6.2.2 如何使用 JSX</span></div><div class="line">1、JSX 语法</div><div class="line">![<span class="string">Alt text</span>](<span class="link">./1477980766543.png</span>)</div><div class="line"><span class="bullet">- </span><span class="strong">**首字母大小写敏感**</span>：如果组件的首字母是大写的，React 知道是自定义的组件；如果首字母是小写的，当成 DOM D的自带元素名。</div><div class="line"></div><div class="line"><span class="bullet">- </span>嵌套</div><div class="line"><span class="bullet">- </span>求值表达式 ( 和语句的区别就是可以运算 )</div><div class="line"><span class="bullet">- </span>驼峰命名</div><div class="line"><span class="bullet">- </span>htmlFor 和 className  (html 和 class)</div><div class="line"></div><div class="line">2、注释、CSS 样式、嵌套</div><div class="line"></div><div class="line">注释的两种方式：</div><div class="line"><span class="bullet">- </span>子节点中，也就是标签包裹的部分，需用<span class="code">`&#123;&#125;`</span>包裹注释，多行注释用<span class="code">`/* */`</span>；单行注释用<span class="code">`//`</span></div><div class="line"><span class="bullet">- </span>属性中，也就是标签本身</div><div class="line"></div><div class="line">CSS 样式</div></pre></td></tr></table></figure></p>
+<p><body><br>    <div id="screen"></div><br>    <script src="./react-15.3.1/build/react.js"></script><br>    <script src="./react-15.3.1/build/react-dom.js"></script><br>    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script><br>    <script type="text/babel"><br>        var style = {<br>            color: “red”,<br>            border: “1px solid #000”,<br>        };<br>        var HelloWorld = React.createClass({<br>            render:function(){<br>                return <p>Hello,World</p><br>            }<br>        });<br>        ReactDOM.render(<div style={style}><HelloWorld></HelloWorld></div>, document.getElementById(‘screen’));<br>    </script><br></body><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3、条件判断的四种写法</div><div class="line">第一种：*<span class="strong">*三元表达式*</span><span class="strong">*</span></div></pre></td></tr></table></figure></p>
+<p>var HelloWorld = React.createClass({<br>    render:function(){<br>        return </p><p>Hello,{this.props.name ? this.props.name : “World”}</p><br>    }<br>});<br>    ReactDOM.render(<div style="{style}"><helloworld name="kitty"></helloworld></div>, document.getElementById(‘screen’));<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">第二种：变量，`<span class="keyword">if</span> `语句</div></pre></td></tr></table></figure><p></p>
+<p><script type="text/babel"><br>    var style = {<br>        color: “red”,<br>        border: “1px solid #000”,<br>    };<br>    var HelloWorld = React.createClass({<br>        getName: function(){<br>        if(this.props.name)<br>            return this.props.name<br>        else<br>            return “world”<br>        },<br>        render: function(){<br>            var name = this.getName();<br>            return <p>Hello,{name}</p><br>        }<br>    });<br>    ReactDOM.render(<div style={style}><HelloWorld name="kitty"></HelloWorld></div>, document.getElementById(‘screen’));<br></script><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">第三种：去掉变量，直接调用函数</div></pre></td></tr></table></figure></p>
+<p><script type="text/babel"><br>    var style = {<br>        color: “red”,<br>        border: “1px solid #000”,<br>    };<br>    var HelloWorld = React.createClass({<br>        getName: function(){<br>        if(this.props.name)<br>            return this.props.name<br>        else<br>            return “world”<br>        },<br>        render: function(){<br>            return <p>Hello,{this.getName()}</p><br>        }<br>    });<br>    ReactDOM.render(<div style={style}><HelloWorld name="kitty"></HelloWorld></div>, document.getElementById(‘screen’));<br></script><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">第四种：比较运算符</div></pre></td></tr></table></figure></p>
+<p><script type="text/babel"><br>    var style = {<br>        color: “red”,<br>        border: “1px solid #000”,<br>    };<br>    var HelloWorld = React.createClass({<br>        render: function(){<br>            return <p>Hello,{this.props.name || “world”}</p><br>        }<br>    });<br>    ReactDOM.render(<div style={style}><HelloWorld name="kitty"></HelloWorld></div>, document.getElementById(‘screen’));<br></script><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">4、万能的函数表达式</div><div class="line">![<span class="string">Alt text</span>](<span class="link">./1477991896001.png</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="section">###6.2.3 非 DOM 属性介绍</span></div><div class="line">1、非 DOM 标准属性：<span class="code">`dangerouslySetInnerHTML、ref、key`</span></div><div class="line"></div><div class="line"><span class="bullet">- </span><span class="strong">**dangerouslySetInnerHTML**</span>：在 JSX 中直接插入 HTML 代码</div></pre></td></tr></table></figure></p>
+<p><script type="text/babel"><br>    var style = {<br>        color: “red”,<br>        border: “1px solid #000”,<br>    };<br>    var rawHTML = {<br>        __html:”<h1>I’m inner HTML</h1>“<br>    }<br>    var HelloWorld = React.createClass({<br>        render: function(){<br>            return <p>Hello, world</p><br>        }<br>    });<br>    ReactDOM.render(<div style={style} dangerouslySetInnerHTML={rawHTML}></div>, document.getElementById(‘screen’));<br></script><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">- </span>*<span class="strong">*ref*</span><span class="strong">*：父组件*</span><span class="strong">*引用*</span><span class="strong">*子组件</span></div></pre></td></tr></table></figure></p>
+<p>var HelloWorld = React.createClass({<br>            this.refs.childp.<br>            render: function(){<br>                return </p><p ref="childp">Hello, world</p><br>            }<br>        });<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">- </span>*<span class="strong">*key*</span><span class="strong">*：提高渲染*</span><span class="strong">*性能*</span><span class="strong">*</span></div></pre></td></tr></table></figure><p></p>
+<p><script type="text/babel"><br>    var style = {<br>        color: “red”,<br>        border: “1px solid #000”,<br>    };</p>
+<pre><code>var HelloWorld = React.createClass({
+    render: function(){
+        return &lt;ul&gt;
+            &lt;li key=&quot;1&quot;&gt;1&lt;/li&gt;
+            &lt;li key=&quot;2&quot;&gt;2&lt;/li&gt;
+            &lt;li key=&quot;3&quot;&gt;3&lt;/li&gt;
+        &lt;/ul&gt;
+    }
+});
+ReactDOM.render(&lt;div style={style}&gt;&lt;HelloWorld name=&quot;kitty&quot;&gt;&lt;/HelloWorld&gt;&lt;/div&gt;, document.getElementById(&apos;screen&apos;));
+</code></pre><p></script><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">![<span class="string">Alt text</span>](<span class="link">./1478001640638.png</span>)</div><div class="line"></div><div class="line"><span class="section">###6.2.4 JSX 解释器架构介绍</span></div><div class="line">1、源码阅读方法</div><div class="line"><span class="bullet">- </span>从执行顺序入手 </div><div class="line"><span class="bullet">- </span>适当忽略细节</div><div class="line"><span class="bullet">- </span>重视烂笔头</div><div class="line"><span class="bullet">- </span>反复阅读</div><div class="line"></div><div class="line">2、理解解释器架构</div><div class="line">![<span class="string">Alt text</span>](<span class="link">./1478088855754.png</span>)</div><div class="line"></div><div class="line">前3块放在服务器端</div><div class="line"></div><div class="line"><span class="section">##6.3 React 组件生命周期详解</span></div><div class="line"><span class="section">###6.3.1 什么是生命周期</span></div><div class="line">1、组件本质上是<span class="code">`状态机`</span>，输入确定，输出一定确定。</div><div class="line">状态发生<span class="code">`转换`</span>时会触发不同的<span class="strong">**钩子函数**</span>，从而让开发者有机会做出响应。</div><div class="line">可以用<span class="code">`事件`</span>的思路来理解状态</div><div class="line"><span class="strong">**组件的所有状态构成了组件的整个生命周期**</span></div><div class="line">![<span class="string">Alt text</span>](<span class="link">./1478088827188.png</span>)</div><div class="line"></div><div class="line"><span class="section">###6.3.2 初始化阶段介绍</span></div><div class="line">1、初始化阶段可以使用的函数：</div><div class="line"><span class="bullet">- </span><span class="strong">**getDefaultProps**</span>：只调用一次，实例之间<span class="code">`共享引用`</span></div><div class="line">&gt;只有在组件的第一个实例初始化的时候会调用，然后 React 会把这个函数的返回结果保存起来，从第二个实例开始他们的默认<span class="code">`属性`</span>都是这个统一的结果。在 JS 中有两种类型的数据，分别是值类型数据（数字、字符串、布尔值）和引用类型数据（对象、数组、函数）。</div><div class="line"></div><div class="line"><span class="bullet">- </span><span class="strong">**getInitialState：**</span>初始化每个实例特有的<span class="code">`状态`</span></div><div class="line"><span class="quote">&gt; 每个实例初始化的时候都会调用他；每个实例都有不同的状态，所以都会调用这个函数</span></div><div class="line"></div><div class="line"><span class="bullet">- </span><span class="strong">**componentWillMount：**</span>render 之前<span class="code">`最后一次修改状态`</span>的机会</div><div class="line"><span class="bullet">- </span><span class="strong">**render：**</span>只能访问<span class="code">` this.props`</span> 和<span class="code">` this.state `</span>，只有一个顶层组件，不允许修改状态和 DOM 输出</div><div class="line"><span class="bullet">- </span><span class="strong">**componentDidMount：**</span>成功 render 并渲染完成真实 DOM 之后触发，<span class="code">`可以修改 DOM`</span></div><div class="line"></div><div class="line">2、代码实例</div></pre></td></tr></table></figure></p>
+<p>```</p>
+<p>###6.3.3 运行中阶段介绍<br>1、运行中阶段可以使用的函数：</p>
+<ul>
+<li><strong>componentWillReceiveProps：</strong>父组件修改属性触发（组件发生改变前触发），可以修改新属性、修改状态</li>
+<li><strong>shouldComponentUpdate：</strong>返回<code>false</code>会阻止 <code>render</code> 调用</li>
+<li><strong>componentWillUpdate：</strong>不能修改属性和状态</li>
+<li><strong>render：</strong>只能访问<code>this.props</code> 和<code>this.state</code>，只有一个顶层组件，不允许修改状态和 DOM 输出</li>
+<li><strong>componentDidUpdate：</strong>可以修改 DOM<br>###6.3.4 销毁阶段介绍<br>销毁阶段可以使用的函数：</li>
+<li>componentWillUnmount：在删除组件之前进行<code>清理</code>操作，比如计时器和事件监听器<br>##6.4 React 属性和状态详解<br>###6.4.1 属性的含义和用法<blockquote>
+<p>props = properties<br>属性：一个事物的性质与关系<br>属性往往是与生俱来、无法自己改变的（从父组件传递过来的）</p>
+</blockquote>
+</li>
+</ul>
+<p>属性的用法共有3种：<br><img src="./1478412272791.png" alt="Alt text"></p>
+<p>###6.4.2 状态的含义和用法</p>
+<blockquote>
+<p>state<br>状态：事物所处的状况<br>状态是由事物自行处理、不断变化的</p>
+</blockquote>
+<p>状态的用法：</p>
+<ul>
+<li>getInitialState：初始化每个实例特有的状态</li>
+<li>setState：更新组件状态（diff 算法）<br>###6.4.3 属性和状态对比<br><img src="./1478413484070.png" alt="Alt text"></li>
+</ul>
+<p>###6.4.4 属性和状态实战<br>项目分析：<br>第一步：分析构成项目的组件<br>第二步：分析组件的关系及数据传递<br>第三步：编写代码</p>
+<p>示例：<br><img src="./1478417191152.png" alt="Alt text"></p>
+<p>##6.5 React 中事件的用法</p>
+<p>###6.5.1 事件处理函数的使用</p>
+<p>###6.5.2 事件对象介绍</p>
+<p>###6.5.3 事件和状态关联</p>
+<p>##6.6 React 组件的协同使用</p>
+<p>###6.6.1 组件协同使用介绍</p>
+<p>###6.6.2 组件嵌套</p>
+<p>###6.6.3 Mixin 编写和使用</p>
+<p>###6.6.4 React 双向绑定 Mixin 源码阅读</p>
+<p>##6.7 React 表单详解</p>
+<p>###6.7.1 不可控组件和可控组件介绍</p>
+<p>###6.7.2 不同表单元素的使用</p>
+<p>###6.7.3 事件处理函数复用</p>
+<p>###6.7.4 表单组件自定义</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/JK-JS-Bootstrap/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
