@@ -1,0 +1,943 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JS,JavaScript高级程序设计（第3版）," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="14章 表单脚本[toc]
+14.1 表单的基础知识
+HTMLFormElement: &amp;lt;form&amp;gt;标签对应的节点
+
+独有属性
+
+
+
+属性名
+说明
+对应的form标签属性
+
+
+
+
+acceptCharset
+服务器能够处理的字符集
+accept-charset
+
+
+action
+接收请求的URL
+action
+
+
+elements
+表单中多有控件的集合（HTMLCollection）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="表单脚本">
+<meta property="og:url" content="https://girlgogo.github.io/2017/03/15/JS-表单脚本/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="14章 表单脚本[toc]
+14.1 表单的基础知识
+HTMLFormElement: &amp;lt;form&amp;gt;标签对应的节点
+
+独有属性
+
+
+
+属性名
+说明
+对应的form标签属性
+
+
+
+
+acceptCharset
+服务器能够处理的字符集
+accept-charset
+
+
+action
+接收请求的URL
+action
+
+
+elements
+表单中多有控件的集合（HTMLCollection）">
+<meta property="og:updated_time" content="2017-03-15T09:08:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="表单脚本">
+<meta name="twitter:description" content="14章 表单脚本[toc]
+14.1 表单的基础知识
+HTMLFormElement: &amp;lt;form&amp;gt;标签对应的节点
+
+独有属性
+
+
+
+属性名
+说明
+对应的form标签属性
+
+
+
+
+acceptCharset
+服务器能够处理的字符集
+accept-charset
+
+
+action
+接收请求的URL
+action
+
+
+elements
+表单中多有控件的集合（HTMLCollection）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/03/15/JS-表单脚本/"/>
+
+
+
+
+
+  <title> 表单脚本 | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/03/15/JS-表单脚本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                表单脚本
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T14:14:23+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript高级程序设计（第3版）/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript高级程序设计（第3版）</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="14章-表单脚本"><a href="#14章-表单脚本" class="headerlink" title="14章 表单脚本"></a>14章 表单脚本</h1><p>[toc]</p>
+<h2 id="14-1-表单的基础知识"><a href="#14-1-表单的基础知识" class="headerlink" title="14.1 表单的基础知识"></a>14.1 表单的基础知识</h2><ul>
+<li><code>HTMLFormElement</code>: <code>&lt;form&gt;</code>标签对应的节点</li>
+</ul>
+<p><strong>独有属性</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+<th>对应的form标签属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>acceptCharset</td>
+<td>服务器能够处理的字符集</td>
+<td>accept-charset</td>
+</tr>
+<tr>
+<td>action</td>
+<td>接收请求的URL</td>
+<td>action</td>
+</tr>
+<tr>
+<td>elements</td>
+<td>表单中多有控件的集合（HTMLCollection）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>enctype</td>
+<td>请求的编码类型</td>
+<td>enctype</td>
+</tr>
+<tr>
+<td>length</td>
+<td>表单中控件的数量</td>
+<td>无</td>
+</tr>
+<tr>
+<td>method</td>
+<td>要发送的HTTP请求类型（”get”、”method”）</td>
+<td>method</td>
+</tr>
+<tr>
+<td>name</td>
+<td>表单的名称</td>
+<td>name</td>
+</tr>
+<tr>
+<td>target</td>
+<td>用于发送请求和接受响应的窗口名称</td>
+<td>target</td>
+</tr>
+</tbody>
+</table>
+<p><strong>独有方法</strong></p>
+<ul>
+<li>reset(): 将所有表单域重置为默认值</li>
+<li>submit(): 提交表单</li>
+</ul>
+<p><strong>获取方式</strong></p>
+<ul>
+<li>方式一：和其它元素一样</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = docuemnt.getElementById(<span class="string">"form1"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>方式二：document.forms:    页面中所有form的集合</li>
+</ul>
+<ol>
+<li>数值索引</li>
+<li>name属性值</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> firstForm = <span class="built_in">document</span>.forms[<span class="number">0</span>];    <span class="comment">//取得页面中的第一个表单</span></div><div class="line"><span class="keyword">var</span> myForm = docuement.forms[<span class="string">'form2'</span>];    <span class="comment">//取得页面中name值为form2的表单</span></div></pre></td></tr></table></figure>
+<p><strong>其它（不推荐）</strong>：document.[form的name值]</p>
+<h3 id="14-1-1-提交表单"><a href="#14-1-1-提交表单" class="headerlink" title="14.1.1 提交表单"></a>14.1.1 提交表单</h3><p><strong>形式一：HTML形式</strong><br>触发提交:</p>
+<ul>
+<li>点击：点击input[type=”submit”]或input[type=”image”]或button[type=”submit”]</li>
+<li>回车：表单中有提交按钮而且拥有焦点时按回车</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--通用提交按钮--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit Form"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--自定义提交按钮--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Submit Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--图像提交按钮--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"image"</span> <span class="attr">src</span>=<span class="string">"graphic.gif"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>特点：请求发给服务器前触发submit事件<br>取消提交：submit事件触发时取消事件的默认行为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</div><div class="line">EventUtil.addHandler(form, <span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">  <span class="comment">//取得事件对象</span></div><div class="line">  event = EventUtil.getEvent(event);</div><div class="line">  <span class="comment">//阻止默认事件</span></div><div class="line">  EventUtil.preventDefault(event);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>形式二：submit()方法</strong><br>触发提交：执行表单节点的submit()方法时<br>特点：不会触发submit事件（调用方法前先验证表单数据）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'myForm'</span>);</div><div class="line">form.submit();</div></pre></td></tr></table></figure>
+<p>注意：防止重复提交表单</p>
+<ul>
+<li>针对形式一：第一次提交表单后禁用提交按钮</li>
+<li>针对形式二：onsubmit事件处理程序取消后续的表单提交操作</li>
+</ul>
+<h3 id="14-1-2-重置表单：所有表单字段都会恢复到页面刚加载完时的初始值"><a href="#14-1-2-重置表单：所有表单字段都会恢复到页面刚加载完时的初始值" class="headerlink" title="14.1.2 重置表单：所有表单字段都会恢复到页面刚加载完时的初始值"></a>14.1.2 重置表单：所有表单字段都会恢复到页面刚加载完时的初始值</h3><p><strong>形式一：HTML形式</strong><br>触发重置: 点击input[type=”reset”]或button[type=”reset”]</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--通用重置按钮--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"Reset Form"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--自定义重置按钮--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>Reset Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>特点：重置前会触发reset事件<br>取消提交：reset事件触发时取消事件的默认行为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</div><div class="line">EventUtil.addHandler(form, <span class="string">'reset'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">  <span class="comment">//取得事件对象</span></div><div class="line">  event = EventUtil.getEvent(event);</div><div class="line">  <span class="comment">//阻止默认事件</span></div><div class="line">  EventUtil.preventDefault(event);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong>形式二：reset()方法</strong><br>触发提交：执行表单节点的submit()方法时<br>特点：项单击一样触发reset事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'myForm'</span>);</div><div class="line">form.reset();</div></pre></td></tr></table></figure>
+<p>注意：提供一个取消按钮让用户回到前一个页面，而不是不分青红皂白重置表单中所有的值。</p>
+<h3 id="14-1-3-表单字段"><a href="#14-1-3-表单字段" class="headerlink" title="14.1.3 表单字段"></a>14.1.3 表单字段</h3><ul>
+<li><code>form.elements</code>属性：包含表单中的所有字段的有序列表<br>索引方式一（推荐）：form.elements[下标]<br>返回数据：获得对应输入元素的字段<br>索引方式二（推荐）：form.elements[“name属性值”]<br>返回数据：对应元素的字段或由多个字段组成的NodeList集合<br>索引方式三（向后兼容）：form[下标]等同于form.elements[下标]<br>索引方式四（向后兼容）：form[”name属性值“]<br>返回数据：只返回第一个命名字段</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'form1'</span>);</div><div class="line"><span class="comment">//取得表单中的第一个字段</span></div><div class="line"><span class="keyword">var</span> field1 = form.elements[<span class="number">0</span>];</div><div class="line"><span class="comment">//取得名为'textbox1'的字段</span></div><div class="line"><span class="keyword">var</span> field2 = form[<span class="string">'textbox1'</span>];</div><div class="line"><span class="comment">//取得表单中保安的字段的数量</span></div><div class="line"><span class="keyword">var</span> fieldCount = form.elements.length;</div></pre></td></tr></table></figure>
+<ol>
+<li>共有的表单字段属性（fieldset之外）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>disabled</td>
+<td>布尔值</td>
+<td>表示当前字段是否被金禁用</td>
+</tr>
+<tr>
+<td>form</td>
+<td>引用（只读）</td>
+<td>指向当前字段所属表单的指针</td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td>当前字段的名称</td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>布尔值</td>
+<td>表示当前字段是否只读</td>
+</tr>
+<tr>
+<td>tabIndex</td>
+<td>数字</td>
+<td>当前字段的切换序号</td>
+</tr>
+<tr>
+<td>type</td>
+<td>字符串</td>
+<td>当前字段的类型,如”checkbox”、”radio”</td>
+</tr>
+<tr>
+<td>value</td>
+<td>字符串或文件路径（只读）</td>
+<td>当前字段将被提交给服务器的值</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'myForm'</span>);</div><div class="line"><span class="keyword">var</span> field = form.elemenets[<span class="number">0</span>];</div><div class="line"><span class="comment">//修改value属性</span></div><div class="line">field.value = <span class="string">'Another value'</span>;</div><div class="line"><span class="comment">//检查form属性的值</span></div><div class="line">alert(field.fform === form);    <span class="comment">//true</span></div><div class="line"><span class="comment">//把焦点设置到当前字段</span></div><div class="line">field.focus();</div><div class="line"><span class="comment">//禁用当前字段</span></div><div class="line">field.disabled = <span class="literal">true</span>;</div><div class="line"><span class="comment">//修改type属性（不推荐，但对input来说可行）</span></div><div class="line">field.type = <span class="string">'checkbox'</span>;</div></pre></td></tr></table></figure>
+<p>注意：</p>
+<ol>
+<li>除了form属性之外的所有其他属性都可以通过JS修改</li>
+<li>避免多次提交表单</li>
+</ol>
+<ul>
+<li>不能通过onclick事件处理程序阻止提交，因为有些浏览器会在触发表单的submit事件之前触发click事件，这样表单将永远无法提交；</li>
+<li>不适合表单中不包含提交按钮的情况</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//避免多次提交表单</span></div><div class="line">EventUtil.addHandler(form, <span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">  event = EventUtil.getEvent(event);</div><div class="line">  <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">  </div><div class="line">  <span class="comment">//取得提交按钮</span></div><div class="line">  <span class="keyword">var</span> btn = target.elements[<span class="string">'submit-btn'</span>];</div><div class="line">  <span class="comment">//禁用它</span></div><div class="line">  btn.disabled = <span class="literal">true</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="14-2-文本框脚本"><a href="#14-2-文本框脚本" class="headerlink" title="14.2 文本框脚本"></a>14.2 文本框脚本</h2><h3 id="14-2-1-选择文本"><a href="#14-2-1-选择文本" class="headerlink" title="14.2.1 选择文本"></a>14.2.1 选择文本</h3><h3 id="14-2-2-过滤输入"><a href="#14-2-2-过滤输入" class="headerlink" title="14.2.2 过滤输入"></a>14.2.2 过滤输入</h3><h4 id="屏蔽字符"><a href="#屏蔽字符" class="headerlink" title="屏蔽字符"></a>屏蔽字符</h4><h4 id="操作剪贴板"><a href="#操作剪贴板" class="headerlink" title="操作剪贴板"></a>操作剪贴板</h4><h3 id="14-2-3-自动切换焦点"><a href="#14-2-3-自动切换焦点" class="headerlink" title="14.2.3 自动切换焦点"></a>14.2.3 自动切换焦点</h3><h3 id="14-2-4-HTML5约束验证API"><a href="#14-2-4-HTML5约束验证API" class="headerlink" title="14.2.4 HTML5约束验证API"></a>14.2.4 HTML5约束验证API</h3><h4 id="1-必填字段"><a href="#1-必填字段" class="headerlink" title="1.必填字段"></a>1.必填字段</h4><h4 id="2-其它输入类型"><a href="#2-其它输入类型" class="headerlink" title="2.其它输入类型"></a>2.其它输入类型</h4><h4 id="3-数值范围"><a href="#3-数值范围" class="headerlink" title="3.数值范围"></a>3.数值范围</h4><h4 id="4-输入模式"><a href="#4-输入模式" class="headerlink" title="4.输入模式"></a>4.输入模式</h4><h4 id="5-检测有效性"><a href="#5-检测有效性" class="headerlink" title="5.检测有效性"></a>5.检测有效性</h4><h4 id="6-禁用验证"><a href="#6-禁用验证" class="headerlink" title="6.禁用验证"></a>6.禁用验证</h4><h2 id="14-3-选择框脚本"><a href="#14-3-选择框脚本" class="headerlink" title="14.3 选择框脚本"></a>14.3 选择框脚本</h2><h3 id="14-3-1-选择选项"><a href="#14-3-1-选择选项" class="headerlink" title="14.3.1 选择选项"></a>14.3.1 选择选项</h3><h3 id="14-3-2-添加选项"><a href="#14-3-2-添加选项" class="headerlink" title="14.3.2 添加选项"></a>14.3.2 添加选项</h3><h3 id="14-3-3-移除选项"><a href="#14-3-3-移除选项" class="headerlink" title="14.3.3 移除选项"></a>14.3.3 移除选项</h3><h3 id="14-3-4-移除和重排选项"><a href="#14-3-4-移除和重排选项" class="headerlink" title="14.3.4 移除和重排选项"></a>14.3.4 移除和重排选项</h3><h2 id="14-4-表单序列化"><a href="#14-4-表单序列化" class="headerlink" title="14.4 表单序列化"></a>14.4 表单序列化</h2><h2 id="14-5-富文本编辑"><a href="#14-5-富文本编辑" class="headerlink" title="14.5 富文本编辑"></a>14.5 富文本编辑</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/JavaScript高级程序设计（第3版）/" rel="tag"># JavaScript高级程序设计（第3版）</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/JS-事件/" rel="next" title="事件">
+                <i class="fa fa-chevron-left"></i> 事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/JS-使用 Canvas 绘图/" rel="prev" title="使用 Canvas 绘图">
+                使用 Canvas 绘图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#14章-表单脚本"><span class="nav-text">14章 表单脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#14-1-表单的基础知识"><span class="nav-text">14.1 表单的基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-1-1-提交表单"><span class="nav-text">14.1.1 提交表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-1-2-重置表单：所有表单字段都会恢复到页面刚加载完时的初始值"><span class="nav-text">14.1.2 重置表单：所有表单字段都会恢复到页面刚加载完时的初始值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-1-3-表单字段"><span class="nav-text">14.1.3 表单字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-2-文本框脚本"><span class="nav-text">14.2 文本框脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-1-选择文本"><span class="nav-text">14.2.1 选择文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-2-过滤输入"><span class="nav-text">14.2.2 过滤输入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#屏蔽字符"><span class="nav-text">屏蔽字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作剪贴板"><span class="nav-text">操作剪贴板</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-3-自动切换焦点"><span class="nav-text">14.2.3 自动切换焦点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-4-HTML5约束验证API"><span class="nav-text">14.2.4 HTML5约束验证API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-必填字段"><span class="nav-text">1.必填字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-其它输入类型"><span class="nav-text">2.其它输入类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-数值范围"><span class="nav-text">3.数值范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-输入模式"><span class="nav-text">4.输入模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-检测有效性"><span class="nav-text">5.检测有效性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-禁用验证"><span class="nav-text">6.禁用验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-3-选择框脚本"><span class="nav-text">14.3 选择框脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-3-1-选择选项"><span class="nav-text">14.3.1 选择选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-3-2-添加选项"><span class="nav-text">14.3.2 添加选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-3-3-移除选项"><span class="nav-text">14.3.3 移除选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-3-4-移除和重排选项"><span class="nav-text">14.3.4 移除和重排选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-4-表单序列化"><span class="nav-text">14.4 表单序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-5-富文本编辑"><span class="nav-text">14.5 富文本编辑</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

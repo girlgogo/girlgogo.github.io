@@ -1,0 +1,948 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JS,JavaScript高级程序设计（第3版）," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="15 章 使用 Canvas 绘图
+历史：由苹果公司推出，主要用在 Dashboard 微件中
+
+兼容性(部分支持)：IE9+ Firefox1.5+  Safari2+ Opera9+  Chrome ios版Safari Android版webkit
+15.1 基本用法注意：必须先设置&amp;lt;canvas&amp;gt;元素的 width 和 height 属性，指定绘图区域大小标签中的信息只有当浏览">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Canvas 绘图">
+<meta property="og:url" content="https://girlgogo.github.io/2017/03/15/JS-使用 Canvas 绘图/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="15 章 使用 Canvas 绘图
+历史：由苹果公司推出，主要用在 Dashboard 微件中
+
+兼容性(部分支持)：IE9+ Firefox1.5+  Safari2+ Opera9+  Chrome ios版Safari Android版webkit
+15.1 基本用法注意：必须先设置&amp;lt;canvas&amp;gt;元素的 width 和 height 属性，指定绘图区域大小标签中的信息只有当浏览">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/图 15.2-1.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/图 15.2-2.png">
+<meta property="og:updated_time" content="2017-03-15T13:07:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Canvas 绘图">
+<meta name="twitter:description" content="15 章 使用 Canvas 绘图
+历史：由苹果公司推出，主要用在 Dashboard 微件中
+
+兼容性(部分支持)：IE9+ Firefox1.5+  Safari2+ Opera9+  Chrome ios版Safari Android版webkit
+15.1 基本用法注意：必须先设置&amp;lt;canvas&amp;gt;元素的 width 和 height 属性，指定绘图区域大小标签中的信息只有当浏览">
+<meta name="twitter:image" content="http://omqyp2bk2.bkt.clouddn.com/图 15.2-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/03/15/JS-使用 Canvas 绘图/"/>
+
+
+
+
+
+  <title> 使用 Canvas 绘图 | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/03/15/JS-使用 Canvas 绘图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用 Canvas 绘图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T14:14:48+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript高级程序设计（第3版）/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript高级程序设计（第3版）</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="15-章-使用-Canvas-绘图"><a href="#15-章-使用-Canvas-绘图" class="headerlink" title="15 章 使用 Canvas 绘图"></a>15 章 使用 Canvas 绘图</h1><blockquote>
+<p><strong>历史：</strong><br>由苹果公司推出，主要用在 Dashboard 微件中</p>
+</blockquote>
+<p><strong>兼容性(部分支持)：</strong><code>IE9+ Firefox1.5+  Safari2+ Opera9+  Chrome ios版Safari Android版webkit</code></p>
+<h2 id="15-1-基本用法"><a href="#15-1-基本用法" class="headerlink" title="15.1 基本用法"></a>15.1 基本用法</h2><p><strong>注意：</strong><br>必须先设置<code>&lt;canvas&gt;</code>元素的 width 和 height 属性，指定绘图区域大小<br>标签中的信息只有当浏览器不支持 canvas 时才会显示</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"drawing"</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span>请更换为支持 Canvas 的浏览器<span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><code>canvasEle.getContext()</code>：获得画布的绘图上下文对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"></div><div class="line"><span class="comment">//确定浏览器是否支持canvas元素</span></div><div class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</div><div class="line">  <span class="comment">//获得画布的绘图上下文对象</span></div><div class="line">  <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">  <span class="comment">//更多代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>canvasEle.toDataURL(MIME)</code>：导出canvas元素上绘制的图像<br><strong>参数：</strong>图像的MIME类型格式<br><strong>注意：</strong><br>  如果绘制到画布上的图像源来自不同的域会抛出错误<br>  较新的版本中加入对”image/jpeg”参数的支持（IE9、Firefox3.5和opera10）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"></div><div class="line"><span class="comment">//确定浏览器是否支持canvas元素</span></div><div class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</div><div class="line">  <span class="comment">//取得图像的数据URI,默认会编码为</span></div><div class="line">  <span class="keyword">var</span> imgURI = drawing.toDataURL(<span class="string">"image/png"</span>);</div><div class="line">  </div><div class="line">  <span class="comment">//显示图像</span></div><div class="line">  <span class="keyword">var</span> image = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">  image.src = imgURI;</div><div class="line">  <span class="built_in">document</span>.body.appendChild(image);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="15-2-2D上下文"><a href="#15-2-2D上下文" class="headerlink" title="15.2 2D上下文"></a>15.2 2D上下文</h2><p><strong>用途：</strong>可以绘制简单的2D图形，比如矩形、弧线和路径。</p>
+<p><strong>特点：</strong>坐标开始于canvas元素左上角，原点坐标是（0，0）</p>
+<h3 id="15-2-1-填充和描边"><a href="#15-2-1-填充和描边" class="headerlink" title="15.2.1 填充和描边"></a>15.2.1 填充和描边</h3><ul>
+<li><code>context.fillStyle</code>：填充，用指定的样式（颜色、渐变或图像）填充图形</li>
+<li><code>context.strokeStyle</code>：描边，只在图形的边缘画线</li>
+</ul>
+<p>注意：值可以是CSS指定颜色值的任何格式、渐变对象、模式对象。默认值都是“#000000”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器是否支持canvas元素</span></div><div class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</div><div class="line">  <span class="comment">//取得图像的数据UTI,默认会编码为</span></div><div class="line">  <span class="keyword">var</span> imgURI = drawing.toDataURL(<span class="string">"image/png"</span>);</div><div class="line">  <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">  context.strokeStyle = <span class="string">"red"</span>;</div><div class="line">  content.fillStyle = <span class="string">"#0000ff"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="15-2-2-绘制矩形"><a href="#15-2-2-绘制矩形" class="headerlink" title="15.2.2 绘制矩形"></a>15.2.2 绘制矩形</h3><blockquote>
+<p>矩形是唯一一种可以直接在 2D 上下文中绘制的形状。与矩形有关的三个方法包括：fillRect()、strokeRect()、clearRect()。都接受4个参数：矩形的 x 坐标、y 坐标、宽度、高度。</p>
+</blockquote>
+<ul>
+<li><code>fillRect()</code>：填充矩形区域</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"></div><div class="line"><span class="comment">//确定浏览器是否支持canvas元素</span></div><div class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</div><div class="line">  <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">  <span class="comment">//绘制红色矩形</span></div><div class="line">  context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">  context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">  </div><div class="line">  <span class="comment">//绘制半透明的蓝色矩形</span></div><div class="line">  context.fillStyle = <span class="string">"rgba(0,0,255,0.5)"</span>;</div><div class="line">  context.fillRect(<span class="number">30</span>,<span class="number">30</span>,<span class="number">50</span>,<span class="number">50</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>strokeRect()</code>：为矩形区域描边<br><strong>context.lineWidth</strong>：描边线条的宽度（任意整数）<br><strong>context.lineCap</strong>：线条末端平头(“butt”)、圆头(“round”)或方头(“square”)<br><strong>context.lineJoin</strong>：控制线条相交的方式是圆交(“round”)、斜交(“bevel”)还是斜接(“miter”)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"></div><div class="line"><span class="comment">//确定浏览器是否支持canvas元素</span></div><div class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</div><div class="line">  <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">  </div><div class="line">  <span class="comment">//绘制红色描边矩形</span></div><div class="line">  context.strokeStyle = <span class="string">"#ff0000"</span>;</div><div class="line">  context.strokeRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"></div><div class="line">  <span class="comment">//绘制半透明的蓝色描边矩形</span></div><div class="line">  context.strokeStyle = <span class="string">"rgba(0,0,255,0.5)"</span>;</div><div class="line">  context.strokeRect(<span class="number">30</span>,<span class="number">30</span>,<span class="number">50</span>,<span class="number">50</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>clearRect()</code>：清除矩形区域<br>共同参数（4）：x坐标、y坐标、宽度、高度</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"></div><div class="line"><span class="comment">//确定浏览器是否支持canvas元素</span></div><div class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</div><div class="line">  <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">  </div><div class="line">  <span class="comment">//绘制红色描边矩形</span></div><div class="line">  context.strokeStyle = <span class="string">"#ff0000"</span>;</div><div class="line">  context.strokeRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"></div><div class="line">  <span class="comment">//绘制半透明的蓝色描边矩形</span></div><div class="line">  context.strokeStyle = <span class="string">"rgba(0,0,255,0.5)"</span>;</div><div class="line">  context.strokeRect(<span class="number">30</span>,<span class="number">30</span>,<span class="number">50</span>,<span class="number">50</span>);</div><div class="line">  </div><div class="line">  <span class="comment">//在两个矩形重叠的地方清除一个小矩形</span></div><div class="line">  context.clearRect(<span class="number">40</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">10</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="15-2-3-绘制路径"><a href="#15-2-3-绘制路径" class="headerlink" title="15.2.3 绘制路径"></a>15.2.3 绘制路径</h3><p><strong>必须</strong></p>
+<ul>
+<li>context.beginPath()：开始绘制新路径</li>
+<li>context.stroke()：完成描边</li>
+<li>context.fill()：完成填充</li>
+<li>context.clip()：完成剪切</li>
+</ul>
+<p><strong>绘制路径</strong></p>
+<ul>
+<li><code>arc(x, y, radius, startAngle, endAngle, counterclockwise)</code>：根据圆心等画弧线<br><strong>x,y：</strong>圆心<br><strong>radius：</strong>弧线半径<br><strong>startAngle：</strong>开始角度<br><strong>endAngle：</strong>结束角度<br><strong>counterclockwise：</strong>是否按逆时针方向计算起始角度</li>
+<li><code>arcTo(x1, y1, x2, y2, radius)</code>：根据起始点画弧线<br><strong>x1,y1：</strong>起点<br><strong>x2,y2：</strong>终点<br><strong>radius：</strong>半径</li>
+<li><code>bezierCurvaTo(c1x, c1y, c2x, c2y，x, y)</code>：从上一点开始绘制一条曲线<br><strong>c1x, c1y：</strong>控制点<br><strong>c2x, c2y：</strong>控制点<br><strong>x,y：</strong>终点</li>
+<li><code>lineTo(x,y)</code>：从上一点开始绘制一条直线<br><strong>x,y：</strong>终点</li>
+<li><code>moveTo(x,y)</code>：移动绘图游标到指定点（不画线）<br><strong>x,y：</strong>目的地</li>
+<li><code>quadraticCurveTo(cx, cy, x, y)</code>：从上一个点开始绘制一条二次曲线<br><strong>cx, cy：</strong>控制点<br><strong>x, y：</strong>终点</li>
+<li><code>rect(x, y, width, height)</code>：绘制矩形（矩形路径而不是独立的形状）<br><strong>x, y：</strong>起点<br><strong>width, height：</strong>宽度和高度<br><img src="http://omqyp2bk2.bkt.clouddn.com/图 15.2-1.png" alt="Alt text"></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器是否支持canvas元素</span></div><div class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</div><div class="line">  <span class="keyword">var</span> context = drawing.getContext(<span class="string">'2d'</span>);</div><div class="line">  <span class="comment">//开始路径</span></div><div class="line">  context.beginPath();</div><div class="line">  <span class="comment">//绘制外圈，2 PI 弧度（通过 Math.PI 计算）</span></div><div class="line">  context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">99</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">  <span class="comment">//绘制内圈</span></div><div class="line">  context.moveTo(<span class="number">194</span>, <span class="number">100</span>);</div><div class="line">  context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">94</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">  <span class="comment">//绘制分针</span></div><div class="line">  context.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">  context.lineTo(<span class="number">100</span>, <span class="number">15</span>);</div><div class="line">  <span class="comment">//绘制时针</span></div><div class="line">  context.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">  context.lineTo(<span class="number">35</span>, <span class="number">100</span>);</div><div class="line">  <span class="comment">//描边路径</span></div><div class="line">  context.stroke();</div><div class="line">&#125;</div><div class="line"><span class="string">``</span><span class="string">`    </span></div><div class="line">其它</div><div class="line">- `context.isPointInPath(x, y)<span class="string">`：判断某一点是否在路径中</span></div><div class="line"></div><div class="line">`<span class="string">``</span>javascript</div><div class="line"><span class="keyword">if</span>(context.isPointInPath(<span class="number">100</span>, <span class="number">100</span>))&#123;</div><div class="line">  alert(<span class="string">"Point (100, 100) is in the path."</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="15-2-4-绘制文本"><a href="#15-2-4-绘制文本" class="headerlink" title="15.2.4 绘制文本"></a>15.2.4 绘制文本</h3><p>相关属性(都有默认值)</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context.font</td>
+<td>表示文本样式</td>
+<td>CSS中指定字体的格式</td>
+<td>例如”10px Arial”</td>
+</tr>
+<tr>
+<td>context.textAlign</td>
+<td>文本的对齐方式</td>
+<td>“statr”/“end”/“left”/“right”/“center”</td>
+<td>推荐用”start”/“end”替换”left”/“right”</td>
+</tr>
+<tr>
+<td>context.textBaseline</td>
+<td>文本的基线</td>
+<td>“top”/“hanging”/“middle”/“alphpbetic”/“ideographic”/“bottom” </td>
+</tr>
+</tbody>
+</table>
+<p>绘制方法</p>
+<ul>
+<li><code>fillText(text, x, y, [maxWidth])</code>：绘制文本填充（使用更多）</li>
+<li><code>strokeText(text, x, y, [maxWidth])</code>：绘制文本描边<br>共同参数：要绘制的文本字符串，x坐标，y坐标，可选的最大像素宽度</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//正常</span></div><div class="line">context.font = <span class="string">"bold 14px Arial"</span>;</div><div class="line">context.textAlign = <span class="string">"center"</span>;</div><div class="line">context.textBaseline = <span class="string">"middle"</span>;</div><div class="line">context.fillText(<span class="string">"12"</span>, <span class="number">100</span>, <span class="number">20</span>);</div><div class="line"><span class="comment">//起点对齐</span></div><div class="line">context.textAlign = <span class="string">"start"</span>;</div><div class="line">context.fillText(<span class="string">"12"</span>, <span class="number">100</span>, <span class="number">40</span>);</div><div class="line"><span class="comment">//终点对齐</span></div><div class="line">context.textAlign = <span class="string">"end"</span>;</div><div class="line">context.fillText(<span class="string">"12"</span>, <span class="number">100</span>, <span class="number">60</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><code>measure(text)</code>：根据font、textAlign、textBaseline的当前值辅助确定文本大小的方法<br>参数：要绘制的文本<br>返回值：TextMetrics对象（该对象目前只有一个width属性）<br>用途：在指定大小的区域绘制大小合适的字体</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fontSize = <span class="number">100</span>;</div><div class="line">context.font = fontSize + <span class="string">"px Arial"</span>;</div><div class="line"><span class="keyword">while</span>(context.measureText(<span class="string">"Hello world!"</span>).width &gt; <span class="number">140</span>)&#123;</div><div class="line">  fontSize --;</div><div class="line">  context.font = fontSize + <span class="string">"px Arial"</span>;</div><div class="line">&#125;</div><div class="line">context.fillText(<span class="string">"Hello world"</span>, <span class="number">10</span>, <span class="number">10</span>);</div><div class="line">context.fillText(<span class="string">"Font size is "</span> + fontSize + <span class="string">"px"</span>, <span class="number">10</span>, <span class="number">50</span>);</div></pre></td></tr></table></figure>
+<h3 id="15-2-5-变换"><a href="#15-2-5-变换" class="headerlink" title="15.2.5 变换"></a>15.2.5 变换</h3><ul>
+<li><p>修改变化矩阵的方法：会将坐标系的原点从(0,0)位置移动到指定位置<br><img src="http://omqyp2bk2.bkt.clouddn.com/图 15.2-2.png" alt="Alt text"></p>
+</li>
+<li><p>跟踪上下文状态变化的方法<br><strong>save()：</strong>将当前的所有状态压入一个栈结构，用于将来通过restore()恢复之<br>  注意：只保存绘图上下文的设置和变换，不保存绘图上下文绘制的内容<br><strong>restore()：</strong>在保存设置的栈结构中向前返回一级，恢复之前的状态，连续调用可以一级一级返回</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.save();</div><div class="line">context.fillStyle = <span class="string">"00ff00"</span>;</div><div class="line">context.translate(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">context.save();</div><div class="line">context.fillStyle = <span class="string">"0000ff"</span>;</div><div class="line">context.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>);<span class="comment">//从点(110,110)开始绘制绿色矩形</span></div><div class="line">context.restore();</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">200</span>);<span class="comment">//从点(110, 110)开始绘制绿色矩形</span></div><div class="line">context.restore();</div><div class="line">context.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>);<span class="comment">//从点(0, 0)开始绘制红色矩形</span></div></pre></td></tr></table></figure>
+<h3 id="15-2-6-绘制图像"><a href="#15-2-6-绘制图像" class="headerlink" title="15.2.6 绘制图像"></a>15.2.6 绘制图像</h3><ul>
+<li><code>drawImage(img, x, y, [width], [height],[partX], [partY], [partWidth], [partHight])</code>：将图像或另一块画布绘制到当前画布上</li>
+</ul>
+<p><strong>参数（9）：</strong></p>
+<ul>
+<li>img：img节点，也可以是另外一个canvas，不能来自其它域</li>
+<li>x：绘制起点x坐标</li>
+<li>y：绘制起点y坐标</li>
+<li>[width]：图片宽度</li>
+<li>[height]：图片高度</li>
+<li>[partX]：图片的目标部分的起点x坐标</li>
+<li>[partY]：图片的目标部分的起点x坐标</li>
+<li>[partWidth]：图片的目标部分的宽度</li>
+<li>[partHight])：图片的目标部分的高度</li>
+</ul>
+<p>注意：不会影响上下文变换矩阵</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> image = <span class="built_in">document</span>.imges[<span class="number">0</span>];</div><div class="line">context.drawImage(image, <span class="number">10</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<h3 id="15-2-7-阴影"><a href="#15-2-7-阴影" class="headerlink" title="15.2.7 阴影"></a>15.2.7 阴影</h3><p>2D 上下文根据下列属性自动为形状或路径绘制出阴影：</p>
+<ul>
+<li>shadowColor：用 CSS 颜色格式表示的阴影颜色，默认黑色；</li>
+<li>shadowOffsetX：形状或路径 x 轴方向的阴影偏移量，默认为0；</li>
+<li>shadowOffsetY：形状或路径 y 轴方向的阴影偏移量，默认为0；</li>
+<li>shadowBlur：模糊的像素数，默认0，即不模糊；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line"></div><div class="line"><span class="comment">//设置阴影</span></div><div class="line">context.shadowOffsetX = <span class="number">5</span>;</div><div class="line">shadowOffsetY = <span class="number">5</span>;</div><div class="line">shadowBlur = <span class="number">4</span>;</div><div class="line">shadowColor = <span class="string">"ragb(0,0,0,.5)"</span>;</div><div class="line"></div><div class="line"><span class="comment">//绘制红色矩形</span></div><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"></div><div class="line"><span class="comment">//绘制半透明的蓝色矩形</span></div><div class="line">context.fillStyle = <span class="string">"rgba(0,0,255,0.5)"</span>;</div><div class="line">context.fillRect(<span class="number">30</span>,<span class="number">30</span>,<span class="number">50</span>,<span class="number">50</span>);</div></pre></td></tr></table></figure>
+<p>兼容性：<br>IE9、Firefox4、Opera11 最规范</p>
+<h3 id="15-2-8-渐变"><a href="#15-2-8-渐变" class="headerlink" title="15.2.8 渐变"></a>15.2.8 渐变</h3><blockquote>
+<p>渐变由 CanvasGradient 实例表示</p>
+</blockquote>
+<ul>
+<li><code>createLinearGradient()</code>：创建一个指定大小的线性渐变，并返回 CanvasGradient 对象的实例。<br><strong>参数（4）</strong>：起点的坐标 x 轴、y 轴、终点的坐标 x 轴、y 轴</li>
+<li><code>addColorStop()</code>：指定色标。<br><strong>参数（2）</strong>：色标位置（0（开始的颜色）到1（结束的颜色）之间的数字）、CSS 颜色值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gradient = context.createLinearGradient(<span class="number">30</span>,<span class="number">30</span>,<span class="number">70</span>,<span class="number">70</span>);</div><div class="line"></div><div class="line">gradient.addColorStop(<span class="number">0</span>,<span class="string">"white"</span>);</div><div class="line">gradient.addColorStop(<span class="number">1</span>,<span class="string">"black"</span>);</div><div class="line"></div><div class="line"><span class="comment">//绘制红色矩形</span></div><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"></div><div class="line"><span class="comment">//绘制渐变矩形</span></div><div class="line">context.fillStyle = gradient;</div><div class="line">context.fillRect(<span class="number">30</span>,<span class="number">30</span>,<span class="number">50</span>,<span class="number">50</span>);</div></pre></td></tr></table></figure>
+<p>或者使用函数确保坐标合适</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createReactLinearGradient</span>(<span class="params">context,x,y,width,height</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> context.createLinearGradient(x,y,x+width,y+height);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>createRadialGradient()</code>：创建径向渐变（或放射渐变）。<br><strong>参数（6）</strong>：即起点圆的圆心、半径、终点圆的圆心、半径</li>
+</ul>
+<h3 id="15-2-9-模式"><a href="#15-2-9-模式" class="headerlink" title="15.2.9 模式"></a>15.2.9 模式</h3><blockquote>
+<p>模式就是重复的图像，可以用来填充或描边图形。</p>
+</blockquote>
+<p><code>createPattern()</code>：创建一个新模式<br><strong>参数（2）</strong>：一个HTML<code>&lt;img&gt;</code>元素、一个表示如何重复图像的字符串（”repeat”、”repeat-x”、”repeat-y”、”no-repeat”）。<br>第一个参数也可以是一个<code>&lt;vidio&gt;</code>元素或者另一个<code>&lt;canvas&gt;</code>元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> image = <span class="built_in">document</span>.image[<span class="number">0</span>],</div><div class="line">  pattern = context.createPattern(image,<span class="string">"repeat"</span>);</div><div class="line"></div><div class="line"><span class="comment">//绘制矩形</span></div><div class="line">context.fillStyle = pattern;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div></pre></td></tr></table></figure>
+<h3 id="15-2-10-使用图像数据"><a href="#15-2-10-使用图像数据" class="headerlink" title="15.2.10 使用图像数据"></a>15.2.10 使用图像数据</h3><p><code>getImageData()</code>：取得原始图像数据。返回的对象是 ImageData 的实例。<br><strong>参数（4）</strong>：要取得其数据画面区域的 x 和 y 坐标，以及该区域的像素宽度和高度。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>图像的宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>图像的高度</td>
+</tr>
+<tr>
+<td>data</td>
+<td>是一个数组，保存每一个像素的数据。每个像素用4个元素保存：红、绿、蓝、透明度值</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = imageData.data,</div><div class="line">  red = data[<span class="number">0</span>],</div><div class="line">  green = data[<span class="number">1</span>],</div><div class="line">  blue = data[<span class="number">2</span>],</div><div class="line">  alpha = data[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<h3 id="15-2-11-合成"><a href="#15-2-11-合成" class="headerlink" title="15.2.11 合成"></a>15.2.11 合成</h3><p>应用到所有绘制操作的属性：</p>
+<ul>
+<li><code>globalAlpha</code>：介于0到1之间的值，用于所有绘制的透明度，默认值为0。</li>
+<li><code>globalComposition-Operation</code>：表示后绘制的图形怎样与先绘制的图形结合，值是字符串。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source-over(默认)</td>
+<td>后图位于先图上方</td>
+</tr>
+<tr>
+<td>source-in</td>
+<td>后图与先图重叠部分可见，两者其余部分透明</td>
+</tr>
+<tr>
+<td>source-out</td>
+<td>后图与先图不重叠部分可见，先图完全透明</td>
+</tr>
+<tr>
+<td>source-atop</td>
+<td>后图与先图重叠部分可见，先图不受影响</td>
+</tr>
+<tr>
+<td>destination-over</td>
+<td>后图位于先图下方，只有之前透明像素下的部分可见</td>
+</tr>
+<tr>
+<td>destination-in</td>
+<td>后图位于先图下方，两者不重叠的部分完全透明</td>
+</tr>
+<tr>
+<td>destination-out</td>
+<td>后图擦除与先图重叠部分</td>
+</tr>
+<tr>
+<td>destination-atop</td>
+<td>后图位于先图下方，在两者不重叠的地方，先图透明</td>
+</tr>
+<tr>
+<td>lighter</td>
+<td>后图与先图重叠部分值相加，使该部分变亮</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>后图替换与之重叠的先图部分</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>后图与先图重叠部分执行“异或”操作</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15-3-WebGl"><a href="#15-3-WebGl" class="headerlink" title="15.3 WebGl"></a>15.3 WebGl</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/JavaScript高级程序设计（第3版）/" rel="tag"># JavaScript高级程序设计（第3版）</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/JS-表单脚本/" rel="next" title="表单脚本">
+                <i class="fa fa-chevron-left"></i> 表单脚本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/JS-HTML5 脚本编程/" rel="prev" title="HTML5 脚本编程">
+                HTML5 脚本编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#15-章-使用-Canvas-绘图"><span class="nav-text">15 章 使用 Canvas 绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#15-1-基本用法"><span class="nav-text">15.1 基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-2-2D上下文"><span class="nav-text">15.2 2D上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-1-填充和描边"><span class="nav-text">15.2.1 填充和描边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-2-绘制矩形"><span class="nav-text">15.2.2 绘制矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-3-绘制路径"><span class="nav-text">15.2.3 绘制路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-4-绘制文本"><span class="nav-text">15.2.4 绘制文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-5-变换"><span class="nav-text">15.2.5 变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-6-绘制图像"><span class="nav-text">15.2.6 绘制图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-7-阴影"><span class="nav-text">15.2.7 阴影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-8-渐变"><span class="nav-text">15.2.8 渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-9-模式"><span class="nav-text">15.2.9 模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-10-使用图像数据"><span class="nav-text">15.2.10 使用图像数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-11-合成"><span class="nav-text">15.2.11 合成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-3-WebGl"><span class="nav-text">15.3 WebGl</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
