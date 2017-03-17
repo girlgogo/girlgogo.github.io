@@ -1,0 +1,826 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具笔记,shell," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="npm 的使用NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+
+允许用户从NPM服务器下载别人编写的第三方包到本地使用。
+允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
+允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+
+由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm 的使用">
+<meta property="og:url" content="https://girlgogo.github.io/2017/02/15/npm 的使用/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="npm 的使用NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+
+允许用户从NPM服务器下载别人编写的第三方包到本地使用。
+允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
+允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+
+由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以">
+<meta property="og:updated_time" content="2017-03-17T06:18:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm 的使用">
+<meta name="twitter:description" content="npm 的使用NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+
+允许用户从NPM服务器下载别人编写的第三方包到本地使用。
+允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
+允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+
+由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/02/15/npm 的使用/"/>
+
+
+
+
+
+  <title> npm 的使用 | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/02/15/npm 的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                npm 的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-15T10:41:00+08:00">
+                2017-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">工具笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="npm-的使用"><a href="#npm-的使用" class="headerlink" title="npm 的使用"></a>npm 的使用</h1><p>NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：</p>
+<ul>
+<li>允许用户从NPM服务器下载别人编写的第三方包到本地使用。</li>
+<li>允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。</li>
+<li>允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。</li>
+</ul>
+<p>由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输入 “npm -v” 来测试是否成功安装。命令如下，出现版本提示表示安装成功:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm -v</div><div class="line">2.3.0</div></pre></td></tr></table></figure>
+<p>如果安装的是旧版本的 npm，可以很容易得通过 npm 命令来升级，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install npm -g</div><div class="line">/usr/<span class="built_in">local</span>/bin/npm -&gt; /usr/<span class="built_in">local</span>/lib/node_modules/npm/bin/npm-cli.js</div><div class="line">npm@2.14.2 /usr/<span class="built_in">local</span>/lib/node_modules/npm</div></pre></td></tr></table></figure>
+<p>如果是 Window 系统使用以下命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm -g</div></pre></td></tr></table></figure>
+<p>使用淘宝镜像的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cnpm install npm -g</div></pre></td></tr></table></figure>
+<h2 id="第1节-使用-npm-命令安装模块"><a href="#第1节-使用-npm-命令安装模块" class="headerlink" title="第1节 使用 npm 命令安装模块"></a>第1节 使用 npm 命令安装模块</h2><p>npm 安装 Node.js 模块语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install &lt;Module Name&gt;</div></pre></td></tr></table></figure>
+<p>以下实例，我们使用 npm 命令安装常用的 Node.js web框架模块 <strong>express:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install express</div></pre></td></tr></table></figure>
+<p>安装好之后，express 包就放在了工程目录下的 node_modules 目录中，因此在代码中只需要通过 require(‘express’) 的方式就好，无需指定第三方包路径。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div></pre></td></tr></table></figure>
+<h2 id="第2节-全局安装与本地安装"><a href="#第2节-全局安装与本地安装" class="headerlink" title="第2节 全局安装与本地安装"></a>第2节 全局安装与本地安装</h2><p>npm 的包安装分为本地安装（local）、全局安装（global）两种，从敲的命令行来看，差别只是有没有-g而已，比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install express          <span class="comment"># 本地安装</span></div><div class="line">npm install express -g   <span class="comment"># 全局安装</span></div></pre></td></tr></table></figure>
+<p>如果出现以下错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm err! Error: connect ECONNREFUSED 127.0.0.1:8087</div></pre></td></tr></table></figure>
+<p>解决办法为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm config <span class="built_in">set</span> proxy null</div></pre></td></tr></table></figure>
+<p><strong>本地安装</strong></p>
+<ol>
+<li>将安装包放在<code>./node_modules</code> 下（运行 npm 命令时所在的目录），如果没有<code>node_modules</code>目录，会在当前执行 npm 命令的目录下生成 <code>node_modules</code>目录。</li>
+<li>可以通过<code>require()</code> 来引入本地安装的包。</li>
+</ol>
+<p><strong>全局安装</strong></p>
+<ol>
+<li>将安装包放在 <code>/usr/local</code>下或者你 <code>node</code>的安装目录。</li>
+<li>可以直接在命令行里使用。</li>
+</ol>
+<p>如果要具备两者功能，则需要在两个地方安装它或使用 <code>npm link</code>。</p>
+<p><strong>实际操作：</strong></p>
+<p>使用全局方式安装 express</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install express -g</div></pre></td></tr></table></figure>
+<p>安装过程输出如下内容，第一行输出了模块的版本号及安装位置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">express@4.13.3 node_modules/express</div><div class="line">├── escape-html@1.0.2</div><div class="line">├── range-parser@1.0.2</div><div class="line">├── merge-descriptors@1.0.0</div><div class="line">├── array-flatten@1.1.1</div><div class="line">├── cookie@0.1.3</div><div class="line">├── utils-merge@1.0.0</div><div class="line">├── parseurl@1.3.0</div><div class="line">├── cookie-signature@1.0.6</div><div class="line">├── methods@1.1.1</div><div class="line">├── fresh@0.3.0</div><div class="line">├── vary@1.0.1</div><div class="line">├── path-to-regexp@0.1.7</div><div class="line">├── content-type@1.0.1</div><div class="line">├── etag@1.7.0</div><div class="line">├── serve-static@1.10.0</div><div class="line">├── content-disposition@0.5.0</div><div class="line">├── depd@1.0.1</div><div class="line">├── qs@4.0.0</div><div class="line">├── finalhandler@0.4.0 (unpipe@1.0.0)</div><div class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</div><div class="line">├── proxy-addr@1.0.8 (forwarded@0.1.0, ipaddr.js@1.0.1)</div><div class="line">├── debug@2.2.0 (ms@0.7.1)</div><div class="line">├── <span class="built_in">type</span>-is@1.6.8 (media-typer@0.3.0, mime-types@2.1.6)</div><div class="line">├── accepts@1.2.12 (negotiator@0.5.3, mime-types@2.1.6)</div><div class="line">└── send@0.13.0 (destroy@1.0.3, statuses@1.2.1, ms@0.7.1, mime@1.3.4, http-errors@1.3.1)</div></pre></td></tr></table></figure>
+<p>使用以下命令来查看所有全局安装的模块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm ls -g</div></pre></td></tr></table></figure>
+<h2 id="第3节-使用-package-json"><a href="#第3节-使用-package-json" class="headerlink" title="第3节 使用 package.json"></a>第3节 使用 package.json</h2><p><strong>package.json 位于模块的目录下，用于定义包的属性</strong>。 express 包的 package.json 文件，位于 node_modules/express/package.json </p>
+<p><strong>Package.json 属性说明</strong></p>
+<ul>
+<li><strong>name</strong> - 包名。</li>
+<li><strong>version</strong> - 包的版本号。</li>
+<li><strong>description</strong> - 包的描述。</li>
+<li><strong>homepage</strong> - 包的官网 url 。</li>
+<li><strong>author</strong> - 包的作者姓名。</li>
+<li><strong>contributors</strong> - 包的其他贡献者姓名。</li>
+<li><strong>dependencies</strong> - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下。</li>
+<li><strong>repository</strong> - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上。</li>
+<li><strong>main</strong> - main 字段是一个模块ID，它是一个指向你程序的主要项目。就是说，如果你包的名字叫 express，然后用户安装它，然后require(“express”)。</li>
+<li><strong>keywords</strong> - 关键字</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"express"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">"Fast, unopinionated, minimalist web framework"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"4.13.3"</span>,</div><div class="line">  <span class="string">"author"</span>: &#123;</div><div class="line">    <span class="string">"name"</span>: <span class="string">"TJ Holowaychuk"</span>,</div><div class="line">    <span class="string">"email"</span>: <span class="string">"tj@vision-media.ca"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"contributors"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"Aaron Heckmann"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"aaron.heckmann+github@gmail.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"Ciaran Jessup"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"ciaranj@gmail.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"Douglas Christopher Wilson"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"doug@somethingdoug.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"Guillermo Rauch"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"rauchg@gmail.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"Jonathan Ong"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"me@jongleberry.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"Roman Shtylman"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"shtylman+expressjs@gmail.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"Young Jae Sim"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"hanul@hanul.me"</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  <span class="string">"license"</span>: <span class="string">"MIT"</span>,</div><div class="line">  <span class="string">"repository"</span>: &#123;</div><div class="line">    <span class="string">"type"</span>: <span class="string">"git"</span>,</div><div class="line">    <span class="string">"url"</span>: <span class="string">"git+https://github.com/strongloop/express.git"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"homepage"</span>: <span class="string">"http://expressjs.com/"</span>,</div><div class="line">  <span class="string">"keywords"</span>: [</div><div class="line">    <span class="string">"express"</span>,</div><div class="line">    <span class="string">"framework"</span>,</div><div class="line">    <span class="string">"sinatra"</span>,</div><div class="line">    <span class="string">"web"</span>,</div><div class="line">    <span class="string">"rest"</span>,</div><div class="line">    <span class="string">"restful"</span>,</div><div class="line">    <span class="string">"router"</span>,</div><div class="line">    <span class="string">"app"</span>,</div><div class="line">    <span class="string">"api"</span></div><div class="line">  ],</div><div class="line">  <span class="string">"dependencies"</span>: &#123;      </div><div class="line">    <span class="string">"accepts"</span>: <span class="string">"~1.2.12"</span>,</div><div class="line">    <span class="string">"array-flatten"</span>: <span class="string">"1.1.1"</span>,</div><div class="line">    <span class="string">"content-disposition"</span>: <span class="string">"0.5.0"</span>,</div><div class="line">    <span class="string">"content-type"</span>: <span class="string">"~1.0.1"</span>,</div><div class="line">    <span class="string">"cookie"</span>: <span class="string">"0.1.3"</span>,</div><div class="line">    <span class="string">"cookie-signature"</span>: <span class="string">"1.0.6"</span>,</div><div class="line">    <span class="string">"debug"</span>: <span class="string">"~2.2.0"</span>,</div><div class="line">    <span class="string">"depd"</span>: <span class="string">"~1.0.1"</span>,</div><div class="line">    <span class="string">"escape-html"</span>: <span class="string">"1.0.2"</span>,</div><div class="line">    <span class="string">"etag"</span>: <span class="string">"~1.7.0"</span>,</div><div class="line">    <span class="string">"finalhandler"</span>: <span class="string">"0.4.0"</span>,</div><div class="line">    <span class="string">"fresh"</span>: <span class="string">"0.3.0"</span>,</div><div class="line">    <span class="string">"merge-descriptors"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">    <span class="string">"methods"</span>: <span class="string">"~1.1.1"</span>,</div><div class="line">    <span class="string">"on-finished"</span>: <span class="string">"~2.3.0"</span>,</div><div class="line">    <span class="string">"parseurl"</span>: <span class="string">"~1.3.0"</span>,</div><div class="line">    <span class="string">"path-to-regexp"</span>: <span class="string">"0.1.7"</span>,</div><div class="line">    <span class="string">"proxy-addr"</span>: <span class="string">"~1.0.8"</span>,</div><div class="line">    <span class="string">"qs"</span>: <span class="string">"4.0.0"</span>,</div><div class="line">    <span class="string">"range-parser"</span>: <span class="string">"~1.0.2"</span>,</div><div class="line">    <span class="string">"send"</span>: <span class="string">"0.13.0"</span>,</div><div class="line">    <span class="string">"serve-static"</span>: <span class="string">"~1.10.0"</span>,</div><div class="line">    <span class="string">"type-is"</span>: <span class="string">"~1.6.6"</span>,</div><div class="line">    <span class="string">"utils-merge"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">    <span class="string">"vary"</span>: <span class="string">"~1.0.1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"devDependencies"</span>: &#123;</div><div class="line">    <span class="string">"after"</span>: <span class="string">"0.8.1"</span>,</div><div class="line">    <span class="string">"ejs"</span>: <span class="string">"2.3.3"</span>,</div><div class="line">    <span class="string">"istanbul"</span>: <span class="string">"0.3.17"</span>,</div><div class="line">    <span class="string">"marked"</span>: <span class="string">"0.3.5"</span>,</div><div class="line">    <span class="string">"mocha"</span>: <span class="string">"2.2.5"</span>,</div><div class="line">    <span class="string">"should"</span>: <span class="string">"7.0.2"</span>,</div><div class="line">    <span class="string">"supertest"</span>: <span class="string">"1.0.1"</span>,</div><div class="line">    <span class="string">"body-parser"</span>: <span class="string">"~1.13.3"</span>,</div><div class="line">    <span class="string">"connect-redis"</span>: <span class="string">"~2.4.1"</span>,</div><div class="line">    <span class="string">"cookie-parser"</span>: <span class="string">"~1.3.5"</span>,</div><div class="line">    <span class="string">"cookie-session"</span>: <span class="string">"~1.2.0"</span>,</div><div class="line">    <span class="string">"express-session"</span>: <span class="string">"~1.11.3"</span>,</div><div class="line">    <span class="string">"jade"</span>: <span class="string">"~1.11.0"</span>,</div><div class="line">    <span class="string">"method-override"</span>: <span class="string">"~2.3.5"</span>,</div><div class="line">    <span class="string">"morgan"</span>: <span class="string">"~1.6.1"</span>,</div><div class="line">    <span class="string">"multiparty"</span>: <span class="string">"~4.1.2"</span>,</div><div class="line">    <span class="string">"vhost"</span>: <span class="string">"~3.0.1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"engines"</span>: &#123;</div><div class="line">    <span class="string">"node"</span>: <span class="string">"&gt;= 0.10.0"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"files"</span>: [</div><div class="line">    <span class="string">"LICENSE"</span>,</div><div class="line">    <span class="string">"History.md"</span>,</div><div class="line">    <span class="string">"Readme.md"</span>,</div><div class="line">    <span class="string">"index.js"</span>,</div><div class="line">    <span class="string">"lib/"</span></div><div class="line">  ],</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"mocha --require test/support/env --reporter spec --bail --check-leaks test/ test/acceptance/"</span>,</div><div class="line">    <span class="string">"test-ci"</span>: <span class="string">"istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/ test/acceptance/"</span>,</div><div class="line">    <span class="string">"test-cov"</span>: <span class="string">"istanbul cover node_modules/mocha/bin/_mocha -- --require test/support/env --reporter dot --check-leaks test/ test/acceptance/"</span>,</div><div class="line">    <span class="string">"test-tap"</span>: <span class="string">"mocha --require test/support/env --reporter tap --check-leaks test/ test/acceptance/"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"gitHead"</span>: <span class="string">"ef7ad681b245fba023843ce94f6bcb8e275bbb8e"</span>,</div><div class="line">  <span class="string">"bugs"</span>: &#123;</div><div class="line">    <span class="string">"url"</span>: <span class="string">"https://github.com/strongloop/express/issues"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"_id"</span>: <span class="string">"express@4.13.3"</span>,</div><div class="line">  <span class="string">"_shasum"</span>: <span class="string">"ddb2f1fb4502bf33598d2b032b037960ca6c80a3"</span>,</div><div class="line">  <span class="string">"_from"</span>: <span class="string">"express@*"</span>,</div><div class="line">  <span class="string">"_npmVersion"</span>: <span class="string">"1.4.28"</span>,</div><div class="line">  <span class="string">"_npmUser"</span>: &#123;</div><div class="line">    <span class="string">"name"</span>: <span class="string">"dougwilson"</span>,</div><div class="line">    <span class="string">"email"</span>: <span class="string">"doug@somethingdoug.com"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"maintainers"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"tjholowaychuk"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"tj@vision-media.ca"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"jongleberry"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"jonathanrichardong@gmail.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"dougwilson"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"doug@somethingdoug.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"rfeng"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"enjoyjava@gmail.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"aredridel"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"aredridel@dinhe.net"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"strongloop"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"callback@strongloop.com"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"defunctzombie"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"shtylman@gmail.com"</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  <span class="string">"dist"</span>: &#123;</div><div class="line">    <span class="string">"shasum"</span>: <span class="string">"ddb2f1fb4502bf33598d2b032b037960ca6c80a3"</span>,</div><div class="line">    <span class="string">"tarball"</span>: <span class="string">"http://registry.npmjs.org/express/-/express-4.13.3.tgz"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"directories"</span>: &#123;&#125;,</div><div class="line">  <span class="string">"_resolved"</span>: <span class="string">"https://registry.npmjs.org/express/-/express-4.13.3.tgz"</span>,</div><div class="line">  <span class="string">"readme"</span>: <span class="string">"ERROR: No README data found!"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>其中的 版本号前面的 <code>^</code>代表着版本号要大于此版本号，且大版本号要一致；<code>~</code>  代表前几位一致，最后一位不同。</p>
+</blockquote>
+<p><strong>卸载模块</strong></p>
+<p>使用以下命令来卸载 Node.js 模块。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall express</div></pre></td></tr></table></figure>
+<p>卸载后，可以到<code>/node_modules/</code>目录下查看包是否还存在，或者使用以下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm ls</div></pre></td></tr></table></figure>
+<p><strong>更新模块</strong></p>
+<p>使用以下命令更新模块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm update express</div></pre></td></tr></table></figure>
+<p><strong>搜索模块</strong></p>
+<p>使用以下来搜索模块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm search express</div></pre></td></tr></table></figure>
+<p><strong>创建模块</strong></p>
+<p>创建模块，package.json 文件是必不可少的。可以使用 NPM 生成 package.json 文件，生成的文件包含了基本的结果。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">$ npm init</div><div class="line">This utility will walk you through creating a package.json file.</div><div class="line">It only covers the most common items, and tries to guess sensible defaults.</div><div class="line"></div><div class="line">See `npm <span class="built_in">help</span> json` <span class="keyword">for</span> definitive documentation on these fields</div><div class="line">and exactly what they do.</div><div class="line"></div><div class="line">Use `npm install &lt;pkg&gt; --save` afterwards to install a package and</div><div class="line">save it as a dependency <span class="keyword">in</span> the package.json file.</div><div class="line"></div><div class="line">Press ^C at any time to quit.</div><div class="line">name: (node_modules) runoob                   <span class="comment"># 模块名</span></div><div class="line">version: (1.0.0) </div><div class="line">description: Node.js 测试模块(www.runoob.com)  <span class="comment"># 描述</span></div><div class="line">entry point: (index.js) </div><div class="line"><span class="built_in">test</span> <span class="built_in">command</span>: make <span class="built_in">test</span></div><div class="line">git repository: https://github.com/runoob/runoob.git  <span class="comment"># Github 地址</span></div><div class="line">keywords: </div><div class="line">author: </div><div class="line">license: (ISC) </div><div class="line">About to write to ……/node_modules/package.json:      <span class="comment"># 生成地址</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"runoob"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">"Node.js 测试模块(www.runoob.com)"</span>,</div><div class="line">  ……</div><div class="line">&#125;</div><div class="line"></div><div class="line">Is this ok? (yes) yes</div></pre></td></tr></table></figure>
+<p>以上的信息，需要根据你自己的情况输入。在最后输入 “yes” 后会生成 package.json 文件。<br>接下来使用以下命令在 npm 资源库中注册用户（使用邮箱注册）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm adduser</div><div class="line">Username: mcmohd</div><div class="line">Password:</div><div class="line">Email: (this IS public) mcmohd@gmail.com</div></pre></td></tr></table></figure>
+<p>接下来我们就用以下命令来发布模块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm publish</div></pre></td></tr></table></figure>
+<p>如果以上的步骤都操作正确，就可以跟其他模块一样使用 npm 来安装。</p>
+<h2 id="第4节-版本号"><a href="#第4节-版本号" class="headerlink" title="第4节 版本号"></a>第4节 版本号</h2><p>NPM使用语义版本号来管理代码，语义版本号分为X.Y.Z三位，分别代表主版本号、次版本号和补丁版本号。当代码变更时，版本号按以下原则更新。</p>
+<ul>
+<li>如果只是修复bug，需要更新Z位。</li>
+<li>如果是新增了功能，但是向下兼容，需要更新Y位。</li>
+<li>如果有大变动，向下不兼容，需要更新X位。</li>
+</ul>
+<p>版本号有了这个保证后，在申明第三方包依赖时，除了可依赖于一个固定版本号外，还可依赖于某个范围的版本号。例如”argv”: “0.0.x”表示依赖于0.0.x系列的最新版argv。<br>NPM支持的所有版本号范围指定方式可以查看官方文档。</p>
+<h2 id="第5节-NPM-常用命令"><a href="#第5节-NPM-常用命令" class="headerlink" title="第5节 NPM 常用命令"></a>第5节 NPM 常用命令</h2><p>除了本章介绍的部分外，NPM还提供了很多功能，package.json里也有很多其它有用的字段。<br>除了可以在npmjs.org/doc/查看官方文档外，这里再介绍一些NPM常用命令。</p>
+<ul>
+<li>NPM提供了很多命令，例如<code>install</code>和<code>publish</code>，使用<code>npm help</code>可查看所有命令。</li>
+<li>使用<code>npm help &lt;command&gt;</code>可查看某条命令的详细帮助，例如npm help install。</li>
+<li>在package.json所在目录下使用<code>npm install . -g</code>可先在本地安装当前命令行程序，可用于发布前的本地测试。</li>
+<li>使用<code>npm update &lt;package&gt;</code>可以把当前目录下node_modules子目录里边的对应模块更新至最新版本。</li>
+<li>使用<code>npm update &lt;package&gt; -g</code>可以把全局安装的对应命令行程序更新至最新版。</li>
+<li>使用<code>npm cache clear</code>可以清空NPM本地缓存，用于对付使用相同版本号发布新版本代码的人。</li>
+<li>使用<code>npm unpublish &lt;package&gt;@&lt;version&gt;</code>可以撤销发布自己发布过的某个版本代码。</li>
+</ul>
+<h2 id="第6节-使用淘宝-NPM-镜像"><a href="#第6节-使用淘宝-NPM-镜像" class="headerlink" title="第6节 使用淘宝 NPM 镜像"></a>第6节 使用淘宝 NPM 镜像</h2><p>国内直接使用 npm 的官方镜像是非常慢的，推荐使用淘宝 NPM 镜像。</p>
+<p>淘宝 NPM 镜像是一个完整 npmjs.org 镜像，可以用此代替官方版本(只读)，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。</p>
+<p>可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
+<p>这样就可以使用 cnpm 命令来安装模块了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cnpm install [name]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具笔记/" rel="tag"># 工具笔记</a>
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/18/JS高级程序设计 21 Ajax 与 Comet/" rel="next" title="Ajax 与 Comet">
+                <i class="fa fa-chevron-left"></i> Ajax 与 Comet
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/19/Emmet 语法/" rel="prev" title="Emmet 语法">
+                Emmet 语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-的使用"><span class="nav-text">npm 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第1节-使用-npm-命令安装模块"><span class="nav-text">第1节 使用 npm 命令安装模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第2节-全局安装与本地安装"><span class="nav-text">第2节 全局安装与本地安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第3节-使用-package-json"><span class="nav-text">第3节 使用 package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第4节-版本号"><span class="nav-text">第4节 版本号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第5节-NPM-常用命令"><span class="nav-text">第5节 NPM 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第6节-使用淘宝-NPM-镜像"><span class="nav-text">第6节 使用淘宝 NPM 镜像</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
