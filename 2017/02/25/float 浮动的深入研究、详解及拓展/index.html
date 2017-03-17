@@ -1,0 +1,777 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="float 浮动的深入研究、详解及拓展一、浮动的原始意义浮动出现的意义其实只是用来让文字环绕图片而已。
+二、浮动的本质浮动的本质是“包裹于破坏”。
+1.浮动的“包裹性”撇开浮动的“破坏性”，浮动就是个带有方位的display:inline-block属性。
+栗子：实现宽度自适应按钮。背景图片：
+方法1: display:inline-block
+1234567891011121314.btn1&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="girlgogo">
+<meta property="og:url" content="https://girlgogo.github.io/2017/02/25/float 浮动的深入研究、详解及拓展/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="float 浮动的深入研究、详解及拓展一、浮动的原始意义浮动出现的意义其实只是用来让文字环绕图片而已。
+二、浮动的本质浮动的本质是“包裹于破坏”。
+1.浮动的“包裹性”撇开浮动的“破坏性”，浮动就是个带有方位的display:inline-block属性。
+栗子：实现宽度自适应按钮。背景图片：
+方法1: display:inline-block
+1234567891011121314.btn1&amp;#">
+<meta property="og:image" content="https://girlgogo.github.io/media/14880974777527.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14880975975931.jpg">
+<meta property="og:image" content="https://girlgogo.github.io/media/14881671444564.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14881698593827.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14881699890302.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14881703799875.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14881704463118.jpg">
+<meta property="og:image" content="https://girlgogo.github.io/media/14881732336913.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14882718663385.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14882718747162.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14882725872807.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14882726996907.png">
+<meta property="og:image" content="https://girlgogo.github.io/media/14882733470361.png">
+<meta property="og:updated_time" content="2017-02-28T09:54:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="girlgogo">
+<meta name="twitter:description" content="float 浮动的深入研究、详解及拓展一、浮动的原始意义浮动出现的意义其实只是用来让文字环绕图片而已。
+二、浮动的本质浮动的本质是“包裹于破坏”。
+1.浮动的“包裹性”撇开浮动的“破坏性”，浮动就是个带有方位的display:inline-block属性。
+栗子：实现宽度自适应按钮。背景图片：
+方法1: display:inline-block
+1234567891011121314.btn1&amp;#">
+<meta name="twitter:image" content="https://girlgogo.github.io/media/14880974777527.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/02/25/float 浮动的深入研究、详解及拓展/"/>
+
+
+
+
+
+  <title>  | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/02/25/float 浮动的深入研究、详解及拓展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-25T20:38:27+08:00">
+                2017-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="float-浮动的深入研究、详解及拓展"><a href="#float-浮动的深入研究、详解及拓展" class="headerlink" title="float 浮动的深入研究、详解及拓展"></a>float 浮动的深入研究、详解及拓展</h1><h2 id="一、浮动的原始意义"><a href="#一、浮动的原始意义" class="headerlink" title="一、浮动的原始意义"></a>一、浮动的原始意义</h2><p><strong>浮动出现的意义其实只是用来让文字环绕图片而已。</strong></p>
+<h2 id="二、浮动的本质"><a href="#二、浮动的本质" class="headerlink" title="二、浮动的本质"></a>二、浮动的本质</h2><p><strong>浮动的本质是“包裹于破坏”。</strong></p>
+<h3 id="1-浮动的“包裹性”"><a href="#1-浮动的“包裹性”" class="headerlink" title="1.浮动的“包裹性”"></a>1.浮动的“包裹性”</h3><p>撇开浮动的“破坏性”，浮动就是个带有方位的<code>display:inline-block</code>属性。</p>
+<p><strong>栗子：</strong>实现宽度自适应按钮。<br><img src="media/14880974777527.png" alt=""><br>背景图片：<br><img src="media/14880975975931.jpg" alt=""></p>
+<p><strong>方法1:</strong> <code>display:inline-block</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.btn1</span>&#123;</div><div class="line">    <span class="attribute">display</span>:inline-block; </div><div class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(http://www.zhangxinxu.com/study/image/sina_gray_btn.png) no-repeat left top; </div><div class="line">    <span class="attribute">padding-left</span>:<span class="number">3px</span>; </div><div class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>; </div><div class="line">    <span class="attribute">font-size</span>:<span class="number">12px</span>; </div><div class="line">    <span class="attribute">text-decoration</span>:none;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.btn1</span> <span class="selector-tag">cite</span>&#123;</div><div class="line">    <span class="attribute">display</span>:block; </div><div class="line">    <span class="attribute">line-height</span>:<span class="number">26px</span>; <span class="attribute">padding</span>:<span class="number">0</span> <span class="number">13px</span> <span class="number">0</span> <span class="number">10px</span>; </div><div class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(http://www.zhangxinxu.com/study/image/sina_gray_btn.png) no-repeat right top;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">class</span>=<span class="string">"btn1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">cite</span>&gt;</span>inline-block方法<span class="tag">&lt;/<span class="name">cite</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="media/14881671444564.png" alt=""></p>
+<p><strong>方法2:</strong> <code>float:left</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.btn1</span>&#123;</div><div class="line">    <span class="attribute">float</span>:left; </div><div class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(http://www.zhangxinxu.com/study/image/sina_gray_btn.png) no-repeat left top; </div><div class="line">    <span class="attribute">padding-left</span>:<span class="number">3px</span>; </div><div class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>; </div><div class="line">    <span class="attribute">font-size</span>:<span class="number">12px</span>; </div><div class="line">    <span class="attribute">text-decoration</span>:none;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.btn1</span> <span class="selector-tag">cite</span>&#123;</div><div class="line">    <span class="attribute">display</span>:block;</div><div class="line">    <span class="attribute">line-height</span>:<span class="number">26px</span>; </div><div class="line">    <span class="attribute">padding</span>:<span class="number">0</span> <span class="number">13px</span> <span class="number">0</span> <span class="number">10px</span>; </div><div class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(http://www.zhangxinxu.com/study/image/sina_gray_btn.png) no-repeat right top;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;a href=<span class="string">"javascript:void(0);"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn1"</span>&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">cite</span>&gt;</span>float方法<span class="tag">&lt;/<span class="name">cite</span>&gt;</span></span></div><div class="line">&lt;<span class="regexp">/a&gt;</span></div></pre></td></tr></table></figure>
+<p><code>display:inline-block</code>与<code>float</code>的差别：</p>
+<p><code>display:inline-block</code>仅仅一个水平排列方向，就是从左往右，而<code>float</code>可以从右往左排列。</p>
+<h3 id="2-浮动的“破坏性”"><a href="#2-浮动的“破坏性”" class="headerlink" title="2.浮动的“破坏性”"></a>2.浮动的“破坏性”</h3><p><strong>结论：</strong>文字之所以会环绕含有<code>float</code>属性的图片时因为浮动破坏了正常的<code>line boxes</code>。</p>
+<h4 id="line-boxes-模型："><a href="#line-boxes-模型：" class="headerlink" title="line boxes 模型："></a>line boxes 模型：</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这是一行普通的文字，这里有个 <span class="tag">&lt;<span class="name">em</span>&gt;</span>em<span class="tag">&lt;/<span class="name">em</span>&gt;</span> 标签。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这段 HTML 代码涉及到4种 boxes：<br>1、首先是 p 标签所在的<strong>containing box</strong>，此box包含了其他的boxes；</p>
+<p>2、然后就是<strong>inline boxes</strong>，inline boxes不会让内容成块显示，而是排成一行，如果外部含inline属性的标签(span,a,cite等)，则属于inline boxes，如果是个光秃秃的文字，则属于匿名inline boxes。</p>
+<p><img src="media/14881698593827.png" alt=""></p>
+<p>3、<strong>line boxes</strong>，一个一个的inline boxes组成了line boxes。是浮动影响布局的关键 box 类型：</p>
+<p><img src="media/14881699890302.png" alt=""></p>
+<p>4、<strong>content area</strong>，content area 是一种围绕文字看不见的box。content area的大小与font-size大小相关。</p>
+<p><img src="media/14881703799875.png" alt=""></p>
+<p><strong>正常的图文混排：</strong>图片与文字基线对齐，图片与文字在同一行上。</p>
+<p><img src="media/14881704463118.jpg" alt=""></p>
+<p>由于line boxes的高度是由其内部最高的inline boxes的高度决定的，所以这里line boxes的高度就是图片的高度。此时图片与文字是同一box类型的元素（都是inline boxes），是在同一行上的，所以，默认状态下，一张图片只能与一行文字对齐。而要想让一张图片要与多行文字对齐，唯一能做的就是破坏正常的line boxes模型。</p>
+<p><strong>含有浮动属性的图片和文字：</strong></p>
+<p>图片加了：<code>float:left</code>样式<br><img src="media/14881732336913.png" alt=""></p>
+<p>浮动彻底破坏了img图片的inline boxes特性，一旦图片失去了inline boxes特性就无法与inline boxes的文字排在一行了，其会从line boxes上脱离出来，跟随自身的方位属性，靠边排列。</p>
+<h4 id="拓展：css-行高-line-height"><a href="#拓展：css-行高-line-height" class="headerlink" title="拓展：css 行高 line-height"></a>拓展：css 行高 line-height</h4><p>在目前的CSS的世界中，所有的高度都是有两个CSS模型产生的，一个是<strong>box盒状模型</strong>，对应 CSS为”<code>height+padding+margin</code>”，另外一个是<strong>line box模型</strong>，对应样式为”<code>line-height</code>”。</p>
+<p>前者的height属性分为明显的height值和隐藏的height值，所谓隐藏的height值是指图片的高度，一旦载入一张图片，其内在的height值就会起作用，即使看不到”height”这个词。而后者针对于文字等这类inline boxes的元素（图片也属于inline boxes，但其height比line-height作用更凶猛，故其inline boxes高度等于其自身高度，对line-height无反应），inline boxes的高度直接受line-height控制（改变line-height文字拉开或重叠就是这个原因），而真正的高度表现则是由每行众多的inline boxes组成的line boxes（等于内部最高的inline box的高度），而这些line boxes的高度垂直堆叠形成了containing box的高度，也就是我们见到的div或是p标签之类的高度了。所以，<strong>对于line box模型的元素而言，没有inline boxes，就没有高度了</strong>，而浮动却恰恰做了这么龌龊的事情，其直接将元素的inline boxes也破坏了，于是这些元素也就没有了高度。</p>
+<p>浮动破坏了图片的inline box，产生了两个结果：</p>
+<ul>
+<li><p>一是图片无法与文字同行显示，脱离了其原来所在的line box链；</p>
+</li>
+<li><p>二是没有了高度（无inline box -&gt; 无line box -&gt; 无高度）。</p>
+</li>
+</ul>
+<p>而这些结果恰恰是文字环绕图片显示所必须的。</p>
+<h2 id="三、浮动的非本职工作"><a href="#三、浮动的非本职工作" class="headerlink" title="三、浮动的非本职工作"></a>三、浮动的非本职工作</h2><h3 id="1-单个无浮动的li元素"><a href="#1-单个无浮动的li元素" class="headerlink" title="1. 单个无浮动的li元素"></a>1. 单个无浮动的li元素</h3><p>看下面的HTML代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">style</span>=<span class="string">"width:440px;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>li没有添加float属性，可见li宽度100%自适应于父ul标签。<br><img src="media/14882718663385.png" alt=""></p>
+<h3 id="2-单个左浮动的li元素"><a href="#2-单个左浮动的li元素" class="headerlink" title="2.单个左浮动的li元素"></a>2.单个左浮动的li元素</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">style</span>=<span class="string">"width:440px;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0; float:left;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>相比上面而言，这里多了个float:left;，浮动的“包裹性”一目了然：<strong>水平方向上，li宽度紧贴内部元素</strong>。</p>
+<p><strong>“撇开浮动的‘破坏性’，浮动就是个带有方位的<code>display:inline-block</code>属性”。</strong>这里的<code>float:left;</code>改成<code>display:inline-block;</code>最后实现的效果基本上就是一样的。</p>
+<p>display:inline-block将对象呈递为内联对象，但是对象的内容作为块对象呈递。所谓对象呈递为内敛对象就是元素呈递为inline box，所以浮动“包裹性”所产生的结果就是使得元素转为了line box模型中的inline box元素。</p>
+<p><img src="media/14882718747162.png" alt=""></p>
+<p><strong>浮动破坏了inline box，也就是破坏了高度，所以这里含有浮动属性的li元素实际上是没有高度的</strong>。所以，要是后面还有同样的li标签的话，就会水平对齐排列的。如下：</p>
+<h3 id="3-多个左浮动的li元素"><a href="#3-多个左浮动的li元素" class="headerlink" title="3. 多个左浮动的li元素"></a>3. 多个左浮动的li元素</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">style</span>=<span class="string">"width:440px;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0; float:left;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0; float:left;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="media/14882725872807.png" alt=""></p>
+<h3 id="4-左浮动的li元素和无浮动的li元素"><a href="#4-左浮动的li元素和无浮动的li元素" class="headerlink" title="4. 左浮动的li元素和无浮动的li元素"></a>4. 左浮动的li元素和无浮动的li元素</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">style</span>=<span class="string">"width:440px;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0; float:left;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="media/14882726996907.png" alt=""></p>
+<h2 id="四、证据"><a href="#四、证据" class="headerlink" title="四、证据"></a>四、证据</h2><h3 id="1-首要证据"><a href="#1-首要证据" class="headerlink" title="1. 首要证据"></a>1. 首要证据</h3><blockquote>
+<p>“本职工作”：文字环绕显示<br>“非本职工作”：列表布局</p>
+</blockquote>
+<p>证据：<strong>高度塌陷</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">style</span>=<span class="string">"width:440px; border-top:4px solid #a0b3d6; border-bottom:4px solid #34538b;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0; float:left;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">style</span>=<span class="string">"border:4px solid #ff6633; background:#ffffc0; float:left;"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../image/border.png"</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="media/14882733470361.png" alt=""></p>
+<p>从中我们可以看到，浮动本不是用来列表布局的，而是用来使元素环绕显示的，因为元素环绕（例如文字），其自身是含有inline boxes高度的，这是inline水平的元素形成高度的基础，所以，虽然浮动元素没有高度，但是其周围环绕的元素是有高度的，只要环绕元素比浮动元素高度高，父标签无高度的问题自然也就没有了。</p>
+<h3 id="2-其他证据"><a href="#2-其他证据" class="headerlink" title="2. 其他证据"></a>2. 其他证据</h3><p><strong>历史</strong><br>CSS刚诞生的时候，那时候的网页还是表格布局的时代，浮动出现的意义就是让文字能够环绕图片显示而已，就如word般。</p>
+<p><strong>现象</strong><br>Google所有的页面几乎都是表格布局；还有twitter，也是表格布局的。</p>
+<h2 id="五、-解决高度塌陷问题–清除浮动"><a href="#五、-解决高度塌陷问题–清除浮动" class="headerlink" title="五、 解决高度塌陷问题–清除浮动"></a>五、 解决高度塌陷问题–清除浮动</h2><p><strong>塌陷原因</strong>：元素含有浮动属性 – 破坏inline box – 破坏line box高度 – 没有高度 – 塌陷。</p>
+<p><strong>什么时候塌陷：</strong>标签里面的元素只要样子没有实际高度时会塌陷。</p>
+<p><strong>解决方法：</strong></p>
+<h3 id="1-投机取巧法（不推荐）"><a href="#1-投机取巧法（不推荐）" class="headerlink" title="1. 投机取巧法（不推荐）"></a>1. 投机取巧法（不推荐）</h3><p>直接一个<code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>当作最后一个子标签放到父标签那儿。</p>
+<p>优点：兼容性强，使用方便，是初学时使用的上佳之选。</p>
+<p>缺点：浪费了一个标签，而且只能使用一次。有时候一不留神中间多了个空格会产生一段空白高度的。</p>
+<h3 id="2-overflow-zoom方法"><a href="#2-overflow-zoom方法" class="headerlink" title="2. overflow + zoom方法"></a>2. overflow + zoom方法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.fix</span>&#123;<span class="attribute">overflow</span>:hidden; <span class="attribute">zoom</span>:<span class="number">1</span>;&#125;</div></pre></td></tr></table></figure>
+<p>优点：代码简洁，涵盖所有浏览器。</p>
+<p>缺点：这个<code>overflow:hidden;</code>是个小炸蛋，要是里面的元素要是想来个 margin 负值定位或是负的绝对定位，岂不是直接被裁掉了。</p>
+<h3 id="3-after-zoom方法-推荐"><a href="#3-after-zoom方法-推荐" class="headerlink" title="3. after + zoom方法 (推荐)"></a>3. after + zoom方法 (推荐)</h3><p><strong>after</strong>就是指标签的最后一个子元素的后面。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.fix</span>&#123;<span class="attribute">zoom</span>:<span class="number">1</span>;&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.fix</span><span class="selector-pseudo">:after</span>&#123;</div><div class="line">    <span class="attribute">display</span>:block; </div><div class="line">    <span class="attribute">content</span>:<span class="string">'clear'</span>; </div><div class="line">    <span class="attribute">clear</span>:both; </div><div class="line">    <span class="attribute">line-height</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">visibility</span>:hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里的line-height:0写成height:0也是可以的。</p>
+<p>优点：不会影响任何其他样式，通用性强，覆盖面广。</p>
+<h2 id="六、float与JavaScript"><a href="#六、float与JavaScript" class="headerlink" title="六、float与JavaScript"></a>六、float与JavaScript</h2><p>float 是 JavaScript 中的一个关键字，不能使用<code>obj.style.float=&quot;left&quot;;</code>这样的句子。得使用其他写法。</p>
+<p>IE浏览器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.style.styleFloat = <span class="string">"left"</span>;</div></pre></td></tr></table></figure>
+<p>其他浏览器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.style.cssFloat = <span class="string">"left"</span>;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/24/css布局之各种居中/" rel="next" title="CSS 布局：各种居中">
+                <i class="fa fa-chevron-left"></i> CSS 布局：各种居中
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#float-浮动的深入研究、详解及拓展"><span class="nav-text">float 浮动的深入研究、详解及拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、浮动的原始意义"><span class="nav-text">一、浮动的原始意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、浮动的本质"><span class="nav-text">二、浮动的本质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浮动的“包裹性”"><span class="nav-text">1.浮动的“包裹性”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-浮动的“破坏性”"><span class="nav-text">2.浮动的“破坏性”</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#line-boxes-模型："><span class="nav-text">line boxes 模型：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拓展：css-行高-line-height"><span class="nav-text">拓展：css 行高 line-height</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、浮动的非本职工作"><span class="nav-text">三、浮动的非本职工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-单个无浮动的li元素"><span class="nav-text">1. 单个无浮动的li元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-单个左浮动的li元素"><span class="nav-text">2.单个左浮动的li元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-多个左浮动的li元素"><span class="nav-text">3. 多个左浮动的li元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-左浮动的li元素和无浮动的li元素"><span class="nav-text">4. 左浮动的li元素和无浮动的li元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、证据"><span class="nav-text">四、证据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-首要证据"><span class="nav-text">1. 首要证据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-其他证据"><span class="nav-text">2. 其他证据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、-解决高度塌陷问题–清除浮动"><span class="nav-text">五、 解决高度塌陷问题–清除浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-投机取巧法（不推荐）"><span class="nav-text">1. 投机取巧法（不推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-overflow-zoom方法"><span class="nav-text">2. overflow + zoom方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-after-zoom方法-推荐"><span class="nav-text">3. after + zoom方法 (推荐)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、float与JavaScript"><span class="nav-text">六、float与JavaScript</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,766 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="display:inline-block/text-align:justify下列表的两端对齐布局1、何为列表元素的两端对齐布局定义：所谓列表元素的两端对齐就是每行列表元素的第一个元素与父容器的左边缘重合，最后一个元素与父容器的右边缘重合。
+2、如何实现元素的两端对齐CSS2中text-align有一个属性值为justify，为对齐之意。其实现的效果就是可以让一行文字两端对齐显示（文字内容要超过一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="列表元素的两端对齐布局">
+<meta property="og:url" content="https://girlgogo.github.io/2017/02/24/列表元素两端对齐布局/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="display:inline-block/text-align:justify下列表的两端对齐布局1、何为列表元素的两端对齐布局定义：所谓列表元素的两端对齐就是每行列表元素的第一个元素与父容器的左边缘重合，最后一个元素与父容器的右边缘重合。
+2、如何实现元素的两端对齐CSS2中text-align有一个属性值为justify，为对齐之意。其实现的效果就是可以让一行文字两端对齐显示（文字内容要超过一">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879423198712.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879470266751.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879471040743.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879472606908.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879496839364.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879503933100.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879516161384.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879518753145.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879519038069.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879531577406.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879535167734.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879535234881.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879535337522.png">
+<meta property="og:updated_time" content="2017-03-17T07:24:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="列表元素的两端对齐布局">
+<meta name="twitter:description" content="display:inline-block/text-align:justify下列表的两端对齐布局1、何为列表元素的两端对齐布局定义：所谓列表元素的两端对齐就是每行列表元素的第一个元素与父容器的左边缘重合，最后一个元素与父容器的右边缘重合。
+2、如何实现元素的两端对齐CSS2中text-align有一个属性值为justify，为对齐之意。其实现的效果就是可以让一行文字两端对齐显示（文字内容要超过一">
+<meta name="twitter:image" content="http://omqyp2bk2.bkt.clouddn.com/14879423198712.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/02/24/列表元素两端对齐布局/"/>
+
+
+
+
+
+  <title> 列表元素的两端对齐布局 | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/02/24/列表元素两端对齐布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                列表元素的两端对齐布局
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-24T11:37:00+08:00">
+                2017-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS-技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS 技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="display-inline-block-text-align-justify下列表的两端对齐布局"><a href="#display-inline-block-text-align-justify下列表的两端对齐布局" class="headerlink" title="display:inline-block/text-align:justify下列表的两端对齐布局"></a>display:inline-block/text-align:justify下列表的两端对齐布局</h1><h2 id="1、何为列表元素的两端对齐布局"><a href="#1、何为列表元素的两端对齐布局" class="headerlink" title="1、何为列表元素的两端对齐布局"></a>1、何为列表元素的两端对齐布局</h2><p>定义：<br>所谓列表元素的两端对齐就是每行列表元素的第一个元素与父容器的左边缘重合，最后一个元素与父容器的右边缘重合。</p>
+<h2 id="2、如何实现元素的两端对齐"><a href="#2、如何实现元素的两端对齐" class="headerlink" title="2、如何实现元素的两端对齐"></a>2、如何实现元素的两端对齐</h2><p>CSS2中<code>text-align</code>有一个属性值为<code>justify</code>，为对齐之意。其实现的效果就是可以让一行文字两端对齐显示（文字内容要超过一行）。<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879423198712.png" alt="Alt text"></p>
+<p><strong>text-align</strong> 主要用来控制<code>inline</code>水平元素、<code>inline-block</code>元素的对齐与显示的，例如嵌套行内标签的文字、图片、<code>input</code>表单控件等；而对<code>block</code>水平的元素是没有作用的。</p>
+<h2 id="3、目前列表元素如何实现两端对齐的"><a href="#3、目前列表元素如何实现两端对齐的" class="headerlink" title="3、目前列表元素如何实现两端对齐的"></a>3、目前列表元素如何实现两端对齐的</h2><p>1、首先是淘宝网首页热卖单品的例子<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879470266751.png" alt="Alt text"><br>其列表布局使用的是传统的<strong>浮动(float)布局</strong>，通过<code>width</code>属性强行增大父容器的宽度来实现看上去的“两端对齐”效果的。<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879471040743.png" alt="Alt text"></p>
+<p>2、人人网热门分享的两端对齐效果的实现方法，它的列表布局为<strong>inline-block</strong>布局。<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879472606908.png" alt="Alt text"></p>
+<p>其也是通过增大父标签的宽度来实现看上去的“两端对齐”效果的，不过其不是通过width属性来增加父标签的宽度的，而是使用的margin负值。<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879496839364.png" alt="Alt text"></p>
+<p>3、利用<code>white-space: nowrap</code>，此方法需在<strong>inline-block</strong>布局基础上使用，一般用在实现单行列表元素看上去的“两端对齐”效果上。</p>
+<h2 id="4-text-align-justify实现两端对齐的好处"><a href="#4-text-align-justify实现两端对齐的好处" class="headerlink" title="4 text-align:justify实现两端对齐的好处"></a>4 text-align:justify实现两端对齐的好处</h2><p>好处：简单方便。<br>只要一个<code>text-align:justify</code>声明，里面的元素就自动等间距两端对齐布局！无需计算每个列表元素间的margin间距，更不用去修改父容器的宽度。</p>
+<h2 id="5-关于-display-inline-block-列表布局"><a href="#5-关于-display-inline-block-列表布局" class="headerlink" title="5 关于 display:inline-block 列表布局"></a>5 关于 display:inline-block 列表布局</h2><h2 id="6-display-inline-block-text-align-justify下列表的两端对齐布局"><a href="#6-display-inline-block-text-align-justify下列表的两端对齐布局" class="headerlink" title="6 display:inline-block + text-align:justify下列表的两端对齐布局"></a>6 display:inline-block + text-align:justify下列表的两端对齐布局</h2><p><strong>1、IE8+、现代浏览器</strong><br>栗子：<code>li</code>列表的两端对齐</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ul</span>&#123;<span class="attribute">text-align</span>: justify;&#125;</div><div class="line"><span class="selector-tag">li</span>&#123;<span class="attribute">display</span>: inline-block;&#125;</div></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li><strong>列表元素首尾标签留空（或换行）</strong></li>
+</ul>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/14879503933100.jpg" alt="Alt text"></p>
+<ul>
+<li>对于 IE8，列表元素不能处于<code>font-size:0</code>的环境下，至少<code>code&gt;font-size:1px</code>，因为IE8浏览器<code>font-size:0</code>或直接把换行空格或普通空格抹掉而无法实现两端对齐效果。</li>
+</ul>
+<p><strong>2、IE6/7 浏览器</strong><br>如何让IE6/7浏览器也有列表元素支持<code>text-align:justify</code>属性？</p>
+<ul>
+<li><strong>inline 标签化</strong>：就是列表元素需要使用 inline 水平的标签，例如<code>span</code>,<code>a</code>, <code>strong</code>, <code>em</code>等，而<code>li</code>, <code>div</code>这些标签就不可以。</li>
+<li><strong>结束标签连续化</strong>：指列表元素及其内部标签的结束标签需要连在一起。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"test.jpg"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ul>
+<li>如果列表标签内嵌多层，则所有层级的结束标签都要连续。</li>
+</ul>
+<p>E6/IE7 浏览器同时满足<strong>inline标签化</strong>、<strong>结束标签连续化</strong>后，再加上先前现代浏览器下的<strong>首尾标签留空</strong>，便能够实现列表元素的两端对齐！</p>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/14879516161384.jpg" alt="Alt text"></p>
+<p><strong>最后一行的两端对齐</strong><br>在列表（或文字段）的最后创建一个高度为0的宽度100%的透明的 inline-block 的标签层。<br>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"justify_fix"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.justify_fix</span>&#123;<span class="attribute">display</span>:inline-block; <span class="attribute">width</span>:<span class="number">100%</span>; <span class="attribute">height</span>:<span class="number">0</span>; <span class="attribute">overflow</span>:hidden;&#125;</div></pre></td></tr></table></figure>
+<p>之前<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879518753145.png" alt="Alt text"><br>之后<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879519038069.png" alt="Alt text"></p>
+<p><strong>兼容各个浏览器的末行也对齐 demo：</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;<span class="attribute">width</span>:<span class="number">50%</span>; <span class="attribute">padding</span>:<span class="number">20px</span>; <span class="attribute">margin</span>:<span class="number">20px</span> auto; <span class="attribute">background-color</span>:<span class="number">#f0f3f9</span>; <span class="attribute">text-align</span>:justify;&#125;</div><div class="line"><span class="selector-class">.list</span>&#123;<span class="attribute">width</span>:<span class="number">120px</span>; <span class="attribute">display</span>:inline-block; <span class="attribute">padding-bottom</span>:<span class="number">20px</span>; <span class="attribute">text-align</span>:center; <span class="attribute">vertical-align</span>:top;&#125;</div><div class="line"><span class="selector-class">.justify_fix</span>&#123;<span class="attribute">display</span>:inline-block; <span class="attribute">width</span>:<span class="number">100%</span>; <span class="attribute">height</span>:<span class="number">0</span>; <span class="attribute">overflow</span>:hidden;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></div><div class="line">哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></div><div class="line">哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  .</div><div class="line">  .</div><div class="line">  .</div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"justify_fix"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>最后一行左对齐排列：</strong>复制几个列表元素的外层标签，等宽，但高度为0，里面就是个&nbsp;(不可缺)，复制的个数一般就是每行元素的列表个数啦，这样肯定可以保证最后一行元素一定是左对齐排列的！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></div><div class="line">哇哦，美女，口水，鼻血~~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-src</span>=<span class="string">"http://image.zhangxinxu.com/image/study/s/s128/mm9.jpg"</span> /&gt;</span></div><div class="line">哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  .</div><div class="line">  .</div><div class="line">  .</div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list left_fix"</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list left_fix"</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list left_fix"</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list left_fix"</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"list left_fix"</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;<span class="attribute">width</span>:<span class="number">50%</span>; <span class="attribute">line-height</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">20px</span> <span class="number">20px</span> <span class="number">0</span>; <span class="attribute">margin</span>:<span class="number">20px</span> auto; <span class="attribute">background-color</span>:<span class="number">#f0f3f9</span>; <span class="attribute">text-align</span>:justify;&#125;</div><div class="line"><span class="selector-class">.list</span>&#123;<span class="attribute">width</span>:<span class="number">120px</span>; <span class="attribute">display</span>:inline-block; <span class="attribute">line-height</span>:<span class="number">1.4</span>; <span class="attribute">padding-bottom</span>:<span class="number">20px</span>; <span class="attribute">text-align</span>:center; <span class="attribute">vertical-align</span>:top;&#125;</div><div class="line"><span class="selector-class">.left_fix</span>&#123;<span class="attribute">height</span>:<span class="number">0</span>; <span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">overflow</span>:hidden;&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-text-align-justify-下两端对齐效果实例"><a href="#7-text-align-justify-下两端对齐效果实例" class="headerlink" title="7 text-align:justify 下两端对齐效果实例"></a>7 text-align:justify 下两端对齐效果实例</h2><p><img src="http://omqyp2bk2.bkt.clouddn.com/14879531577406.png" alt="Alt text"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text-justify-list"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"share-figure"</span> <span class="attr">href</span>=<span class="string">"##"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://g3.ykimg.com/0100641F464D70F6C6415104E10E31D2C67343-769A-CD77-F409-D1FE92B48EE1"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"play-icon"</span>&gt;</span> <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"share-name"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">title</span>=<span class="string">"对着飞机你能尿多远。"</span> <span class="attr">href</span>=<span class="string">"##"</span>&gt;</span>对着飞机你能尿多远。<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"share-num"</span>&gt;</span>分享:<span class="tag">&lt;<span class="name">em</span>&gt;</span>51894<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"##"</span>&gt;</span>分享<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    </div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text-justify-list"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"share-figure"</span> <span class="attr">href</span>=<span class="string">"##"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://g4.ykimg.com/0100641F464CA79833C689008BEED04131818F-D866-A169-69C5-3F4E1E8814AD"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"play-icon"</span>&gt;</span> <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"share-name"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"##"</span>&gt;</span>赵本山和范围的《说情》，可算找到了，太TM的...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"share-num"</span>&gt;</span>分享:<span class="tag">&lt;<span class="name">em</span>&gt;</span>53223<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"##"</span>&gt;</span>分享<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   </div><div class="line">  .</div><div class="line">  .</div><div class="line">  .</div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"justify_fix"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.video-list</span>&#123;<span class="attribute">width</span>:<span class="number">540px</span>; <span class="attribute">margin-left</span>:auto; <span class="attribute">margin-right</span>:auto; <span class="attribute">text-align</span>:justify;&#125; <span class="comment">/*列表父容器*/</span></div><div class="line"><span class="selector-class">.text-justify-list</span>&#123;<span class="attribute">display</span>:inline-block; <span class="attribute">width</span>:<span class="number">97px</span>; <span class="attribute">margin-bottom</span>:<span class="number">15px</span>; <span class="attribute">text-align</span>:left; <span class="attribute">vertical-align</span>:top;&#125;<span class="comment">/*列表元素*/</span></div><div class="line"></div><div class="line">.</div><div class="line">. <span class="comment">/* 完全人人网CSS代码*/</span></div><div class="line">.</div><div class="line"></div><div class="line"><span class="selector-class">.justify_fix</span>&#123;<span class="attribute">display</span>:inline-block; <span class="attribute">width</span>:<span class="number">100%</span>; <span class="attribute">height</span>:<span class="number">0</span>; <span class="attribute">overflow</span>:hidden;&#125;<span class="comment">/*末行悲剧变喜剧*/</span></div></pre></td></tr></table></figure>
+<p>需注意的事项均已达到：</p>
+<p><strong>①inline水平标签</strong><br>如下截图所示：<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879535167734.png" alt="Alt text"></p>
+<p><strong>②列表结束标签连续</strong><br>如下图所示：<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879535234881.png" alt="Alt text"></p>
+<p><strong>③列表标签换行或留空</strong><br>如下截图所示：<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879535337522.png" alt="Alt text"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/23/css 深入理解 vertical-align 和 line-height的关系/" rel="next" title="CSS 深入理解 vertical-align 和 line-height 的关系">
+                <i class="fa fa-chevron-left"></i> CSS 深入理解 vertical-align 和 line-height 的关系
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/24/css布局之各种居中/" rel="prev" title="CSS 布局：各种居中">
+                CSS 布局：各种居中 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#display-inline-block-text-align-justify下列表的两端对齐布局"><span class="nav-text">display:inline-block/text-align:justify下列表的两端对齐布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、何为列表元素的两端对齐布局"><span class="nav-text">1、何为列表元素的两端对齐布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、如何实现元素的两端对齐"><span class="nav-text">2、如何实现元素的两端对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、目前列表元素如何实现两端对齐的"><span class="nav-text">3、目前列表元素如何实现两端对齐的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-text-align-justify实现两端对齐的好处"><span class="nav-text">4 text-align:justify实现两端对齐的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-关于-display-inline-block-列表布局"><span class="nav-text">5 关于 display:inline-block 列表布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-display-inline-block-text-align-justify下列表的两端对齐布局"><span class="nav-text">6 display:inline-block + text-align:justify下列表的两端对齐布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-text-align-justify-下两端对齐效果实例"><span class="nav-text">7 text-align:justify 下两端对齐效果实例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

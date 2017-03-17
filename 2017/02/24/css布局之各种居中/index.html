@@ -1,0 +1,756 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="CSS 布局：各种居中注：本文所讲方法除了特别说明外，都是兼容IE6+、谷歌、火狐等主流浏览器的。
+1 把 margin 设为 auto具体来说就是把要居中的元素的margin-left和margin-right都设为auto，此方法只能进行水平的居中，且对浮动元素或绝对定位元素无效。
+2 使用 text-align:center只能对图片，按钮，文字等行内元素(display为inline或in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 布局：各种居中">
+<meta property="og:url" content="https://girlgogo.github.io/2017/02/24/css布局之各种居中/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="CSS 布局：各种居中注：本文所讲方法除了特别说明外，都是兼容IE6+、谷歌、火狐等主流浏览器的。
+1 把 margin 设为 auto具体来说就是把要居中的元素的margin-left和margin-right都设为auto，此方法只能进行水平的居中，且对浮动元素或绝对定位元素无效。
+2 使用 text-align:center只能对图片，按钮，文字等行内元素(display为inline或in">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879192302599.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879192391668.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879193804400.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879196180388.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879196325879.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879202026243.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879214203580.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879214287915.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879370894361.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879371064721.jpg">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/14879379456222.jpg">
+<meta property="og:updated_time" content="2017-03-17T07:24:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 布局：各种居中">
+<meta name="twitter:description" content="CSS 布局：各种居中注：本文所讲方法除了特别说明外，都是兼容IE6+、谷歌、火狐等主流浏览器的。
+1 把 margin 设为 auto具体来说就是把要居中的元素的margin-left和margin-right都设为auto，此方法只能进行水平的居中，且对浮动元素或绝对定位元素无效。
+2 使用 text-align:center只能对图片，按钮，文字等行内元素(display为inline或in">
+<meta name="twitter:image" content="http://omqyp2bk2.bkt.clouddn.com/14879192302599.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/02/24/css布局之各种居中/"/>
+
+
+
+
+
+  <title> CSS 布局：各种居中 | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/02/24/css布局之各种居中/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS 布局：各种居中
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-24T16:37:00+08:00">
+                2017-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS-技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS 技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CSS-布局：各种居中"><a href="#CSS-布局：各种居中" class="headerlink" title="CSS 布局：各种居中"></a>CSS 布局：各种居中</h1><p>注：本文所讲方法除了特别说明外，都是兼容IE6+、谷歌、火狐等主流浏览器的。</p>
+<h2 id="1-把-margin-设为-auto"><a href="#1-把-margin-设为-auto" class="headerlink" title="1 把 margin 设为 auto"></a>1 把 margin 设为 auto</h2><p>具体来说就是把要居中的元素的<code>margin-left</code>和<code>margin-right</code>都设为<code>auto</code>，此方法只能进行水平的居中，且对浮动元素或绝对定位元素无效。</p>
+<h2 id="2-使用-text-align-center"><a href="#2-使用-text-align-center" class="headerlink" title="2 使用 text-align:center"></a>2 使用 text-align:center</h2><p>只能对图片，按钮，文字等行内元素(<strong>display为inline或inline-block</strong>等)进行水平居中。但是在IE6、7这两个奇葩的浏览器中，它是能对任何元素进行水平居中的。</p>
+<h2 id="3-使用-line-height-让单行的文字垂直居中"><a href="#3-使用-line-height-让单行的文字垂直居中" class="headerlink" title="3 使用 line-height 让单行的文字垂直居中"></a>3 使用 line-height 让单行的文字垂直居中</h2><p>把文字的line-height设为文字父容器的高度，适用于只有一行文字的情况。</p>
+<h2 id="4-使用表格"><a href="#4-使用表格" class="headerlink" title="4 使用表格"></a>4 使用表格</h2><p>如果使用表格，只要用到 <code>td</code>(也可能会用到 <code>th</code>)元素的 <code>align=”center”</code>以及 <code>vertical-align=”middle”</code>这两个属性就可以完美的处理它里面内容的水平和垂直居中问题了,而且表格默认的就会对它里面的内容进行垂直居中。</p>
+<p>如果想在css中控制表格内容的居中：</p>
+<ul>
+<li>垂直居中可以使用 <code>vertical-align:middle</code></li>
+<li>至于水平居中，貌似css中是没有相对应的属性的<ol>
+<li>但是在IE6、7中我们可以使用<code>text-align:center</code>来对表格里的元素进行水平居中</li>
+<li>IE8+以及谷歌、火狐等浏览器的<code>text-align:center</code>只对行内元素起作用，对块状元素无效。</li>
+</ol>
+</li>
+</ul>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/14879192302599.jpg" alt="Alt text"><br><img src="http://omqyp2bk2.bkt.clouddn.com/14879192391668.jpg" alt="Alt text"></p>
+<ul>
+<li>在ie6、7中可以通过css的<code>text-algin</code>来控制表格内容的水平方向的对齐，无论内容是行内元素还是块状元素都有效。</li>
+</ul>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/14879193804400.jpg" alt="Alt text"></p>
+<ul>
+<li>但在ie8+以及chrome、firefox等浏览器中的<code>text-align:center</code>对块状元素无效，只能用表格自有的align属性。</li>
+</ul>
+<h2 id="5-使用-display-table-cell-来居中-（IE8-、谷歌、火狐等）"><a href="#5-使用-display-table-cell-来居中-（IE8-、谷歌、火狐等）" class="headerlink" title="5 使用 display:table-cell 来居中 （IE8+、谷歌、火狐等）"></a>5 使用 display:table-cell 来居中 （IE8+、谷歌、火狐等）</h2><p>对于那些不是表格的元素，可以通过<code>display:table-cell</code> 来把它模拟成一个表格单元格。例如：</p>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/14879196180388.jpg" alt="Alt text"><br><img src="http://omqyp2bk2.bkt.clouddn.com/14879196325879.jpg" alt="Alt text"></p>
+<h2 id="6-使用绝对定位来进行居中"><a href="#6-使用绝对定位来进行居中" class="headerlink" title="6 使用绝对定位来进行居中"></a>6 使用绝对定位来进行居中</h2><p>（只适用于那些已经知道它们的宽度或高度的元素。）</p>
+<p>原理：<br>通过把这个绝对定位元素的<code>left</code>或<code>top</code>的属性设为50%，这个时候元素并不是居中的，而是比居中的位置向右或向左偏了这个元素宽度或高度的一半的距离，所以需要使用一个负的<code>margin-left</code>或<code>margin-top</code>的值来把它拉回到居中的位置，这个负的margin值就取元素宽度或高度的一半。</p>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/14879202026243.jpg" alt="Alt text"></p>
+<p>如果只想实现一个方向的居中，则可以只使用left , margin-left 来实现水平居中，使用top , margin-top来实现垂直居中。</p>
+<h2 id="7-另一种使用绝对定位来居中的方法"><a href="#7-另一种使用绝对定位来居中的方法" class="headerlink" title="7 另一种使用绝对定位来居中的方法"></a>7 另一种使用绝对定位来居中的方法</h2><p>(只适用于那些已经知道它们的宽度或高度的元素，并且只支持IE9+,谷歌，火狐等符合w3c标准的现代浏览器。)<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879214203580.jpg" alt="Alt text"><br><img src="http://omqyp2bk2.bkt.clouddn.com/14879214287915.jpg" alt="Alt text"><br>这里如果不定义元素的宽和高的话，那么他的宽就会由left,right的值来决定，高会由top,bottom的值来决定，所以必须要设置元素的高和宽。同时如果改变left，right , top , bottom的值还能让元素向某个方向偏移。</p>
+<h2 id="8-使用浮动配合相对定位来进行水平居中"><a href="#8-使用浮动配合相对定位来进行水平居中" class="headerlink" title="8 使用浮动配合相对定位来进行水平居中"></a>8 使用浮动配合相对定位来进行水平居中</h2><p><strong>原理：</strong><br>把浮动元素相对定位到父元素宽度50%的地方，但这个时候元素还不是居中的，而是比居中的那个位置多出了自身一半的宽度，这时就需要他里面的子元素再用一个相对定位，把那多出的自身一半的宽度拉回来，而因为相对定位正是相对于自身来定位的，所以自身一半的宽度只要把left 或 right 设为50%就可以得到了，因而不用知道自身的实际宽度是多少。</p>
+<p><strong>优点：</strong>是不用知道要居中的元素的宽度，即使这个宽度是不断变化的也行；<br><strong>缺点：</strong>是需要一个多余的元素来包裹要居中的元素。</p>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/14879370894361.jpg" alt="Alt text"><br><img src="http://omqyp2bk2.bkt.clouddn.com/14879371064721.jpg" alt="Alt text"></p>
+<h2 id="9-利用-font-size-来实现垂直居中-IE6、IE7"><a href="#9-利用-font-size-来实现垂直居中-IE6、IE7" class="headerlink" title="9 利用 font-size 来实现垂直居中 (IE6、IE7)"></a>9 利用 font-size 来实现垂直居中 (IE6、IE7)</h2><p>如果父元素高度是已知的，要把它里面的子元素进行水平垂直居中，则可以使用这种方法，且子元素的宽度或高度都不必知道。</p>
+<p>要点是给父元素设一个合适的<code>font-size</code>的值，这个值的取值为该父元素的高度除以 <strong>1.14</strong> 得到的值，并且子元素必须 是一个<code>inline</code>或<code>inline-block</code>元素，需要加上<code>vertical-align:middle</code>属性。</p>
+<p>在方法5中说过在IE8+、火狐谷歌等现在浏览器中可以用<code>display:table-cell</code>来进行居中，而这里的<code>font-size</code>的方法则适用于IE6和IE7，所以把这两种方法结合起来就能兼容所有浏览器了：<br><img src="http://omqyp2bk2.bkt.clouddn.com/14879379456222.jpg" alt="Alt text"><br>上面的例子中因为要居中的元素是一个块状元素，所以要把他变成行内元素，如果要居中的元素是图片等行内元素，则可以省略此步。</p>
+<p>另外，如果<code>vertical-align:middle</code>是写在父元素中而不是子元素中，这样也是可以的，只不过计算font-size时使用的  1.14 这个 数值要变成大约 <strong>1.5</strong> 这个值。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/24/列表元素两端对齐布局/" rel="next" title="列表元素的两端对齐布局">
+                <i class="fa fa-chevron-left"></i> 列表元素的两端对齐布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/25/float 浮动的深入研究、详解及拓展/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-布局：各种居中"><span class="nav-text">CSS 布局：各种居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-把-margin-设为-auto"><span class="nav-text">1 把 margin 设为 auto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用-text-align-center"><span class="nav-text">2 使用 text-align:center</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用-line-height-让单行的文字垂直居中"><span class="nav-text">3 使用 line-height 让单行的文字垂直居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-使用表格"><span class="nav-text">4 使用表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-使用-display-table-cell-来居中-（IE8-、谷歌、火狐等）"><span class="nav-text">5 使用 display:table-cell 来居中 （IE8+、谷歌、火狐等）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-使用绝对定位来进行居中"><span class="nav-text">6 使用绝对定位来进行居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-另一种使用绝对定位来居中的方法"><span class="nav-text">7 另一种使用绝对定位来居中的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-使用浮动配合相对定位来进行水平居中"><span class="nav-text">8 使用浮动配合相对定位来进行水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-利用-font-size-来实现垂直居中-IE6、IE7"><span class="nav-text">9 利用 font-size 来实现垂直居中 (IE6、IE7)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
