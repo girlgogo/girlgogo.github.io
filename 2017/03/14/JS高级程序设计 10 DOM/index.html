@@ -1,0 +1,1720 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JS,JavaScript高级程序设计（第3版）," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="10 章 DOM
+DOM（文档对象模型）：针对 HTML 和 XML 文档的一个 API （应用程序编程接口）。描绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。脱胎于 Netscape 及微软公司创建的 DHTML （动态 HTML），但现在已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。 
+
+注意：IE 中的所有 DOM 对象都是以 COM 对象的形式实现的。
+1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM">
+<meta property="og:url" content="https://girlgogo.github.io/2017/03/14/JS高级程序设计 10 DOM/index.html">
+<meta property="og:site_name" content="girlgogo">
+<meta property="og:description" content="10 章 DOM
+DOM（文档对象模型）：针对 HTML 和 XML 文档的一个 API （应用程序编程接口）。描绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。脱胎于 Netscape 及微软公司创建的 DHTML （动态 HTML），但现在已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。 
+
+注意：IE 中的所有 DOM 对象都是以 COM 对象的形式实现的。
+1">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/1481186042158.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/1481186084750.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/1481186171842.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/1481186234793.png">
+<meta property="og:image" content="http://omqyp2bk2.bkt.clouddn.com/1481186251473.png">
+<meta property="og:updated_time" content="2017-03-16T07:35:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM">
+<meta name="twitter:description" content="10 章 DOM
+DOM（文档对象模型）：针对 HTML 和 XML 文档的一个 API （应用程序编程接口）。描绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。脱胎于 Netscape 及微软公司创建的 DHTML （动态 HTML），但现在已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。 
+
+注意：IE 中的所有 DOM 对象都是以 COM 对象的形式实现的。
+1">
+<meta name="twitter:image" content="http://omqyp2bk2.bkt.clouddn.com/1481186042158.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://girlgogo.github.io/2017/03/14/JS高级程序设计 10 DOM/"/>
+
+
+
+
+
+  <title> DOM | girlgogo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">girlgogo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笔记分享</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://girlgogo.github.io/2017/03/14/JS高级程序设计 10 DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Emily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="girlgogo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DOM
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-14T17:45:02+08:00">
+                2017-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript高级程序设计（第3版）/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript高级程序设计（第3版）</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="10-章-DOM"><a href="#10-章-DOM" class="headerlink" title="10 章 DOM"></a>10 章 DOM</h1><blockquote>
+<p>DOM（文档对象模型）：针对 HTML 和 XML 文档的一个 API （应用程序编程接口）。描绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。脱胎于 Netscape 及微软公司创建的 DHTML （动态 HTML），但现在已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。 </p>
+</blockquote>
+<p><strong>注意：</strong>IE 中的所有 DOM 对象都是以 COM 对象的形式实现的。</p>
+<h2 id="10-1-节点层次"><a href="#10-1-节点层次" class="headerlink" title="10.1 节点层次"></a>10.1 节点层次</h2><p><strong>关键词</strong><br>1) <strong>文档元素</strong>：文档的最外层元素，文档中所有其它元素都包含在文档元素中，一个文档中只能有一个文档元素。HTML文档的文档元素始终是<code>&lt;html&gt;</code>。<br>2) <strong>DOM树</strong>：总共有12中节点类型</p>
+<p><strong>列表</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>element_node</td>
+<td>元素节点</td>
+</tr>
+<tr>
+<td>2</td>
+<td>attribute_node</td>
+<td>属性节点</td>
+</tr>
+<tr>
+<td>3</td>
+<td>text_node</td>
+<td>文本节点</td>
+</tr>
+<tr>
+<td>4</td>
+<td>cdata_section_node</td>
+<td>CDATA片段</td>
+</tr>
+<tr>
+<td>5</td>
+<td>entity_reference_node</td>
+<td>实体引用</td>
+</tr>
+<tr>
+<td>6</td>
+<td>entity_node</td>
+<td>实体</td>
+</tr>
+<tr>
+<td>7</td>
+<td>processing_instruction_node</td>
+<td>处理指令</td>
+</tr>
+<tr>
+<td>8</td>
+<td>comment_node</td>
+<td>注释节点</td>
+</tr>
+<tr>
+<td>9</td>
+<td>document_node</td>
+<td>文档节</td>
+</tr>
+<tr>
+<td>10</td>
+<td>document_type_node</td>
+</tr>
+<tr>
+<td>11</td>
+<td>document_fragment_node</td>
+</tr>
+<tr>
+<td>12</td>
+<td>notation_node</td>
+</tr>
+</tbody>
+</table>
+<p><strong>实例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>SimplePage<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/1481186042158.png" alt="Alt text"></p>
+<h3 id="10-1-1-Node类型"><a href="#10-1-1-Node类型" class="headerlink" title="10.1.1 Node类型"></a>10.1.1 Node类型</h3><p><strong>来源：</strong>DOM1定义的Node接口的JS实现类Node<br><strong>nodeType属性</strong><br><strong>作用：</strong>JS的所有节点类型都继承自Node类型，因此所有的节点类型都共享着相同的基本属性和方法。<br><strong>重点：</strong></p>
+<ul>
+<li><strong>nodeType属性</strong>：用于表明节点的类型   </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>等价的数字（兼容所有浏览器）</th>
+<th>Nodetype对应的常量（IE中不存在）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Node.ELEMENT_NODE</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Node.ATTRIBUTE_NODE</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Node.TEXT_NODE</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Node.CDATA_SECTION_NODE</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Node.ENTITY_REFERENCE_NODE</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Node.ENITY_NODE</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Node.PROCESSING_INSTRUCTION_NODE</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Node.COMMENT_NODE</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Node.DOCUMENT_NODE</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Node.DOCUMENT_TYPE_NODE</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Node.DOCUMENT_FRAGMENT_NODE</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Node.NOTATION_NODE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判断节点类型</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(someNode.nodeType == <span class="number">1</span>)&#123;<span class="comment">//兼容所有浏览器</span></div><div class="line">  alert(<span class="string">'Node is an element!'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1、<strong>nodeName和nodeValue属性</strong><br><strong>注意：</strong>取值情况取决于节点类型</p>
+<p>2、<strong>节点关系</strong><br><strong>属性：</strong><br>1) <code>childNodes</code>属性<br><strong>值：</strong><code>NodeList 对象</code>,一个类数组对象，用于保存一组有序的节点，可以通过位置访问这些节点。<br><strong>特点：</strong>基于 DOM 结构动态查询</p>
+<p>访问：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> firstChild = someNode.childnodes[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> secondChild = someNode.childnodes.item(<span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> count = someNode.childNodes.length;</div></pre></td></tr></table></figure>
+<p>将 <strong>NodeList</strong> 转换为数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方式一：在 IE8- 无效</span></div><div class="line"><span class="keyword">var</span> arrayOfNodes = <span class="built_in">Array</span>.prototype.slice.call(someNode.childNodes,<span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="comment">//方式二：在所有浏览器中都能运行</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertToArray</span>(<span class="params">nodes</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> array = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">try</span>&#123;</div><div class="line">    array = <span class="built_in">Array</span>.prototype.slice.call(nodes);</div><div class="line">  &#125;<span class="keyword">catch</span>(e)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = nodes.length; i &lt; len; i++)&#123;</div><div class="line">      array.push(nodes[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> array;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2) <code>parentNode</code>属性<br><strong>值</strong>：指向文档树中的父节点<br><strong>特点</strong>：包含在 childNodes 列表中的所有节点都具有相同的父节点</p>
+<p>3) <code>firstChild</code>属性<br><strong>值：</strong>指向 childNodes 列表中的第一个节点<br><strong>特点：</strong>相当于 someNode.childNodes[0]</p>
+<p>4) <code>lastChild</code>属性<br><strong>值：</strong>指向 childNodes 列表中最后一个节点<br><strong>特点：</strong>没有指向的节点值为 null</p>
+<p>5) <code>previousSibling</code>属性<br><strong>值：</strong>指向同一 childNodes 列表中的上一个节点。<br><strong>特点：</strong>没有指向的节点值为 null</p>
+<p>6) <code>nextSibling</code>属性<br><strong>值：</strong>指向同一 childNodes 列表中的下一个节点。<br><strong>特点：</strong>没有指向的节点值为 null</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(someNode.nextSibling === <span class="literal">null</span>)&#123;</div><div class="line">  alert(<span class="string">'最后一个节点'</span>);</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(someNode.previousSibling === <span class="literal">null</span>)&#123;</div><div class="line">  alert(<span class="string">'第一个节点'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/1481186084750.png" alt="Alt text"></p>
+<p>7) <code>ownerDocument</code>属性<br>值：指向整个文档的文档节点<br>特点：通过这个属性就不用层层回溯达到顶端了<br>    方法<br>8) <code>hasChildNodes()</code>方法<br>返回值：节点包含子节点时返回true；否则返回false<br>要点：比查询childNodes属性的length值更简单好用</p>
+<p><strong>3、操作节点（必需先取得父节点，如果节点类型没有子节点将会出错）</strong><br>1) <code>appendChild()</code>方法<br>用途：向 childNodes 列表的末尾添加一个节点，相关节点的关系指针都会相应得到更新。<br>参数：新创建的节点或文档树中的节点。<br>返回值：新增的节点<br>注意：任何DOM节点不能同时出现在多个位置，如果插入的节点本身就是DOM树上的，将会移动到新的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> returnedNode  = someNode.appendChild(newNode);</div><div class="line">alert(returnNode == newNode);    <span class="comment">//true</span></div><div class="line">alert(someNode.lastChild == newNode);    <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>2) <code>insertBefore()</code>方法<br>用途：将节点放在childNodes列表中某个特定的位置上。<br>参数（2）：要插入的节点、作为参照的节点。<br>返回值：插入的新节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插入后成为最后一个子节点</span></div><div class="line"><span class="keyword">var</span> returnNode = someNode.insertBefore(newNode,<span class="literal">null</span>);</div><div class="line">alert(newNode == someNode.lastChild);</div><div class="line"><span class="comment">//插入后成为第一个子节点</span></div><div class="line"><span class="keyword">var</span> returnNode = someNode.insertBefore(newNode,someNode.firstChild);</div><div class="line">alert(newNode == someNode.firstNode);</div><div class="line"><span class="comment">//插入到最后一个子节点前面</span></div><div class="line"><span class="keyword">var</span> returnNode = someNode.insetBefore(newNode,someNode.lastNode);</div><div class="line">alert(newNode == someNode.lastNode);</div></pre></td></tr></table></figure>
+<p>3) <code>replaceChild()</code>方法<br>用途：替换某个节点<br>参数（2）：要插入的节点、要替换的节点<br>返回值：被替换（移除）的节点<br>注意：被替换的节点任然是文档的一部分，只是没有自己的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//替换第一个子节点</span></div><div class="line"><span class="keyword">var</span> returnNode  = someNode.replaceChild(newCode, someNode.firseChild);</div><div class="line"><span class="comment">//替换最后一个子节点</span></div><div class="line">returnNode = someNode.replaceChild(newCode, someNode.lastChild):</div></pre></td></tr></table></figure>
+<p>4) <code>removeChild()</code>方法<br>用途：移除节点<br>参数：要移除的节点<br>返回值：被移除的节点<br>注意：被替换的节点仍然是文档的一部分，只是没有自己的位置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//移除第一个子节点</span></div><div class="line"><span class="keyword">var</span> formerFirstChild = someNode.removeChild(someNode.firstCihld);</div></pre></td></tr></table></figure>
+<p>4、<strong>其它方法</strong>（所有类型节点都有）<br>1) <code>cloneNode()</code><br>用途：创建一个节点的副本<br>参数：true表示深拷贝（递归子节点）；false表示浅拷贝（不拷贝子节点）<br>返回值：节点副本<br>注意：返回的节点归文档所有，但是是没有父节点的孤儿；IE9之前的版本会为空白符创建节点；IE会同时复制事件处理程序</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> deepList = myList.cloneNode(<span class="literal">true</span>);</div><div class="line"><span class="built_in">console</span>.log(deepList.childNodes.length);    <span class="comment">//3(IE&lt;9)或 7（其它浏览器）</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> shallowList = myList.cloneNode(<span class="literal">false</span>);</div><div class="line"><span class="built_in">console</span>.log(shallowList.childNodes.length);    <span class="comment">//0</span></div></pre></td></tr></table></figure>
+<p>2) <code>normalize()</code>方法<br>用途：处理文档树中的文本节点，删除空文本节点，合并相邻文本节点<br>参数：父节点</p>
+<h3 id="10-1-2-Document类型"><a href="#10-1-2-Document类型" class="headerlink" title="10.1.2    Document类型"></a>10.1.2    Document类型</h3><p><strong>关键词</strong><br><strong>Document</strong>类型：JS通过该类型表示文档<br><strong>HTMLDocument</strong>类型：继承自Document类型，表示HTML文档</p>
+<p><strong>document对象</strong>是：<br>1) HTMLDocuemnt 类型的一个实例<br>2) window 对象的属性        </p>
+<p><strong>Document</strong>节点特征            </p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>9</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>“# document”</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>null</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>null</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ownerDocument</td>
+<td>null</td>
+</tr>
+<tr>
+<td>6</td>
+<td>childNodes</td>
+<td>DocumentType(最多一个)、Element(最多一个)、ProcessingInstruction(处理指令)或Comment（注释）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>兼容性</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>支持访问构造函数和原型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document</td>
+<td>FF、Safri、Chrome、Opera</td>
+</tr>
+<tr>
+<td>HTMLDocument</td>
+<td>所有</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1、文档的子节点</strong><br><strong>document</strong>下的节点的访问方式<br>1) <code>document.documentElement</code>（推荐）<br>作用：访问<code>&lt;html&gt;</code>节点<br>兼容性：所有<br>2) <code>document.childNodes[0]</code><br>作用：访问<code>&lt;html&gt;</code>节点<br>3) <code>document.firstChild</code><br>作用：访问<code>&lt;html&gt;</code>节点</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement;    <span class="comment">//取得对&lt;html&gt;的引用</span></div><div class="line">alert(html === <span class="built_in">document</span>.childNodes[<span class="number">0</span>]);    <span class="comment">//true</span></div><div class="line">alert(html === docuemnt.firstChild);    <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>4) <code>document.body</code><br>作用：访问<code>&lt;body&gt;</code>节点<br>兼容性：所有</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.body;    <span class="comment">//取得对&lt;body&gt;的引用</span></div></pre></td></tr></table></figure>
+<p>5) <code>document.doctype</code><br>作用：访问&lt;！DOCTYPE&gt;节点<br>兼容性：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>处理方式</th>
+<th>document.doctype</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE8-</td>
+<td>解释为注释并把它作为Comment节点</td>
+<td>null</td>
+</tr>
+<tr>
+<td>IE9+、FF</td>
+<td>作为文档的第一个子节点</td>
+<td>DocumentType节点（也可以通过firstChid和childNodes[0]访问到）</td>
+</tr>
+<tr>
+<td>Safari、Chrome、Opera</td>
+<td>不作为文档子节点，不会出现在document.childNodes中</td>
+<td>DocumentType节点</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> docType = docuemnt.doctype;    <span class="comment">//取得对&lt;!DOCTYPE&gt;的引用</span></div></pre></td></tr></table></figure>
+<p>6) <code>&lt;html&gt;</code>之外的注释</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--第一条注释--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--第二条注释--&gt;</span></div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>处理方式</th>
+<th>节点类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE8-、Safari3.1+、Opera、Chrome</td>
+<td>只为第一条注释创建注释节点</td>
+<td>注释节点，document.childNodes中的第一个节点</td>
+</tr>
+<tr>
+<td>IE9+</td>
+<td>为两条注释分别创建注释节点</td>
+<td>注释节点,document.childNodes中的节点</td>
+</tr>
+<tr>
+<td>FF、Safari3.1-</td>
+<td>完全忽视这两条注释</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2、文档信息</strong><br><strong>HTMLDocument 的实例 document 包含的 Document 对象没有的属性。</strong><br>1) <code>document.title</code>属性<br><strong>作用：</strong>可以取得当前页面的标题，也可以修改当前页面的标题并反映在浏览器的标题栏。<br><strong>值：</strong><code>&lt;title&gt;</code>元素中的文本，显示在浏览器窗口的标题栏或标题页上。<br><strong>特点：</strong>修改该属性不会改变<code>&lt;title&gt;</code>属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得文档标题</span></div><div class="line"><span class="keyword">var</span> originalTitle = <span class="built_in">document</span>.title;</div><div class="line"></div><div class="line"><span class="comment">//设置文档标题</span></div><div class="line"><span class="built_in">document</span>.title = <span class="string">'new page title'</span>;</div></pre></td></tr></table></figure>
+<p>2) <code>document.URL</code> 属性<br><strong>作用：</strong>取得页面完整的URL<br><strong>值：</strong>地址栏中显示的URL<br><strong>特点：</strong>只读</p>
+<p>3) <code>document.domain</code>属性<br><strong>作用：</strong>取得页面的域名或通过改变页面中包含的来自其它子域框架或内嵌框架的domain实现跨域通信<br><strong>值：</strong>页面的域名<br><strong>特点：</strong>可写，由于跨域安全限制，不可设置为URL不包含的域，即只能设置为父域；一旦设置为“松散的”就不能设置回”紧绷的“（IE7-除外）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//假设页面来自p2p.wrox.com（www.wrox.com也一样）</span></div><div class="line"><span class="built_in">document</span>.domain = <span class="string">'wrox.com'</span>;<span class="comment">//松散的（成功）</span></div><div class="line"><span class="built_in">document</span>.domain = <span class="string">'p2p.wrox.com'</span>;<span class="comment">//紧绷（出错！）</span></div></pre></td></tr></table></figure>
+<p>4) <code>docuemnt.referrer</code>属性<br><strong>作用：</strong>取得链接到当前页面的那个页面的URL<br><strong>值：</strong>链接到当前页面的那个页面的URL，可能包含空字符串<br><strong>特点：</strong>只读</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得完整的URL</span></div><div class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.URL;</div><div class="line"></div><div class="line"><span class="comment">//取得域名</span></div><div class="line"><span class="keyword">var</span> domain = <span class="built_in">document</span>.demain;</div><div class="line"></div><div class="line"><span class="comment">//取得来源页面的URL</span></div><div class="line"><span class="keyword">var</span> referrer = <span class="built_in">document</span>.referrer;</div></pre></td></tr></table></figure>
+<p><strong>3、查找元素</strong><br>1) <code>getElementById()</code>方法<br><strong>用途：</strong>通过ID获得元素<br><strong>参数：</strong>要取得元素的ID，区分大小写<br><strong>返回值：</strong>存在返回相应ID元素；否则返回null<br><strong>注意</strong></p>
+<ul>
+<li>IE7-不区分大小写</li>
+<li>页面中多个ID相同的元素只返回第一个</li>
+<li>IE7-怪癖：name值匹配的表单元素（input、textarea、button、select）也会被该方法返回，因此注意不让表单字段的name和其它元素ID相同<br>2) <code>getElementByTagName()</code>方法<br><strong>用途：</strong>通过标签名获得元素集合<br><strong>参数：</strong>标签名<br><strong>返回值：</strong>HTMLCollection对象，类似NodeList<br><strong>注意：</strong>传入“*”作为参数可以返回所有元素，IE会返回所有注释节点</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"myimage.gif"</span> <span class="attr">name</span>=<span class="string">"myimage"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> images = <span class="built_in">document</span>.getElementByTagName(<span class="string">'img'</span>); <span class="comment">//取得所有图像的集合</span></div><div class="line"><span class="built_in">console</span>.log(images.length);    <span class="comment">//输出图像的数量</span></div><div class="line"><span class="built_in">console</span>.log(images[<span class="number">0</span>].src);    <span class="comment">//输出第一个图像元素的src属性</span></div><div class="line"><span class="built_in">console</span>.log(images.item(<span class="number">0</span>).src);</div></pre></td></tr></table></figure>
+<p>3) <code>HTMLCollection</code>对象<br><code>namedItem()方法</code><br><strong>用途：</strong>通过元素的name特性取得集合中的项<br><strong>参数：</strong>元素的name属性值<br><strong>返回值：</strong>元素<br><strong>注意：</strong>可以替换为使用方括号语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myImage = images.namedItem(<span class="string">'myImage'</span>);</div></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myImage  = images[<span class="string">'myImage'</span>];</div></pre></td></tr></table></figure></p>
+<p>4) <code>getElementsByName()</code><br><strong>用途：</strong>返回给定name特性的所有元素<br><strong>参数：</strong>元素的name值<br><strong>返回值：</strong>HTMLCollection类型<br><strong>注意：</strong>返回值使用 namedItem() 只能获得第一项</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">legend</span>&gt;</span>Which color do you prefer?<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"red"</span> <span class="attr">name</span>=<span class="string">"color"</span> <span class="attr">id</span>=<span class="string">"colorRed"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"color"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"green"</span> <span class="attr">name</span>=<span class="string">"color"</span> <span class="attr">id</span>=<span class="string">"colorGreen"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"color"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"blue"</span> <span class="attr">name</span>=<span class="string">"color"</span> <span class="attr">id</span>=<span class="string">"colorBlue"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"color"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> radios = <span class="built_in">document</span>.getElementsByName(<span class="string">'color'</span>);</div></pre></td></tr></table></figure>
+<p><strong>4、特殊集合（HTMLCollection）</strong><br><strong>特点：</strong>会随着文档的更新而更新</p>
+<table>
+<thead>
+<tr>
+<th>集合</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document.anchors</td>
+<td>文档中所有带name特性的a元素</td>
+<td></td>
+</tr>
+<tr>
+<td>document.applets</td>
+<td>文档中所有applet元素</td>
+<td>不建议使用</td>
+</tr>
+<tr>
+<td>document.forms</td>
+<td>文档中所有form元素</td>
+<td>document.getElementByTagName(“form”)得到相同结果</td>
+</tr>
+<tr>
+<td>document.images</td>
+<td>文档中所有img元素</td>
+<td>document.getElementByTagName(“img”)得到相同结果</td>
+</tr>
+<tr>
+<td>document.lnks</td>
+<td>文档中所有带hreef特性的a元素</td>
+</tr>
+</tbody>
+</table>
+<p><strong>5、DOM一致性检测</strong></p>
+<p><code>document.implementation属性</code><br><strong>用途：</strong>检测浏览器实现了DOM的哪些部分</p>
+<ul>
+<li><code>document.implementation.hasFeature()</code><br><strong>参数（2）</strong>：要检测的DOM功能的名称、版本号<br><strong>返回值：</strong>支持返回true；否则返回false<br><strong>问题：</strong>返回true并不意味着实现和规范完全一致<br><strong>注意：</strong>同时使用能力检测</li>
+</ul>
+<p><img src="http://omqyp2bk2.bkt.clouddn.com/1481186171842.png" alt="Alt text"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> hasXmlDom = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"XML"</span>,<span class="string">"1.0"</span>);</div></pre></td></tr></table></figure>
+<p><strong>6、文档写入</strong></p>
+<p><strong>注意：</strong>不支持文档写入的情况：</p>
+<ul>
+<li>严格型XHTML文档</li>
+<li>按照 <code>application/xml+xhtml</code>  内容类型提供的页面</li>
+</ul>
+<p>1) <code>document.write()</code><br><strong>用途：</strong>原样写入输出流到文本<br><strong>参数：</strong>字符串<br><strong>注意：</strong>加载文档阶段调用直接向其中输出内容；加载结束后调用会重写整个页面，而且需要自己打开/关闭输出流，关闭输出流后才会将内容添加进文档。<br>2) <code>document.writeln()</code><br><strong>用途：</strong>写入输出流到文本，会自动在字符串的末尾添加一个换行符(\n)<br><strong>参数：</strong>字符串<br><strong>注意：</strong>加载文档阶段调用直接向其中输出内容；加载结束后调用会重写整个页面，而且需要自己打开/关闭输出流。<br>3) <code>document.open()</code><br><strong>用途：</strong>HTML文档加载完后使用，用来打开网页输出流<br><strong>注意：</strong>会导致之前body中的所有内容被删除<br>4) <code>document.close()</code><br><strong>用途：</strong>关闭输出流<br><strong>注意：</strong>open()和close()之间执行的write()会依次往后插入到body中</p>
+<h3 id="10-1-3-Element类型"><a href="#10-1-3-Element类型" class="headerlink" title="10.1.3 Element类型"></a>10.1.3 Element类型</h3><p><strong>节点特征</strong>          </p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>元素的标签名</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>null</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>Document或Element</td>
+</tr>
+<tr>
+<td>5</td>
+<td>childNodes</td>
+<td>Element、Text、Comment、ProcessingInstruction、CDATASection或EntityReference</td>
+</tr>
+</tbody>
+</table>
+<p><strong>属性</strong><br>1) <code>nodeName</code>属性<br>值：标签名<br>2) <code>tagName</code>属性<br>值：标签名,比nodeName更清晰</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'myDiv'</span>);</div><div class="line">alert(div.tagName);    <span class="comment">//DIV</span></div><div class="line">alert(div.tagName == div.nodeName);    <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p><strong>注意：</strong>大小写（HTML中标签名始终都以全部大写表示；XML（XHTML）中与源代码一致）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(element.tagName.toLowerCase() == <span class="string">'div'</span>)&#123;</div><div class="line">  <span class="comment">//在此执行某些操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>兼容性：</strong></p>
+<table>
+<thead>
+<tr>
+<th>浏览器版本</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>safari2–、Opera8–</td>
+<td>不能访问Element类型的构造函数</td>
+</tr>
+<tr>
+<td>其它</td>
+<td>可以访问Element类型的构造函数及其原型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1、HTML元素</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>元素在文档中的唯一标识符</td>
+</tr>
+<tr>
+<td>title</td>
+<td>有关元素的附加说明信息，一般通过工具提示条显示出来</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>元素内容的语言代码，很少使用</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>语言的方向，“ltr”（从左到右）；“rtl”(从右到左)</td>
+</tr>
+<tr>
+<td>className</td>
+<td>为元素指定的CSS类（没有使用class，因为是保留字）</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv"</span> <span class="attr">class</span>=<span class="string">"bd"</span> <span class="attr">title</span>=<span class="string">"Body text"</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">dir</span>=<span class="string">"ltr"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div =  <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="built_in">console</span>.log(div.id);    <span class="comment">//"myDiv"</span></div><div class="line"><span class="built_in">console</span>.log(div.className);    <span class="comment">//"bd"</span></div><div class="line"><span class="built_in">console</span>.log(div.title);  <span class="comment">//"Body text" </span></div><div class="line"><span class="built_in">console</span>.log(div.lang);    <span class="comment">//"en"</span></div><div class="line"><span class="built_in">console</span>.log(div.dir);    <span class="comment">//"ltr"</span></div></pre></td></tr></table></figure>
+<p>所有HTML元素都是由 HTMLElement 或更具体的子类型来表示（斜体指不推荐）：<br><img src="http://omqyp2bk2.bkt.clouddn.com/1481186234793.png" alt="Alt text"><br><img src="http://omqyp2bk2.bkt.clouddn.com/1481186251473.png" alt="Alt text"></p>
+<p><strong>2、取得特性</strong></p>
+<ul>
+<li><code>getAttribute()</code>方法<br>用途：获得特性值（推荐只在获得自定义特性时使用）<br>参数：元素的属性，不区分大小写<br>返回值：属性不存在返回null<br>注意：自定义属性也有效，但只有公认的（非自定义的）属性才能在DOM对象中找到对应属性(IE除外)</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv"</span> <span class="attr">class</span>=<span class="string">"bd"</span>  <span class="attr">title</span>=<span class="string">"Body text"</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">dir</span>=<span class="string">"ltr"</span> <span class="attr">my_special_attribute</span>=<span class="string">"hello"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="built_in">console</span>.log(div.getAttribute(<span class="string">"id"</span>)); <span class="comment">//"myDiv"</span></div><div class="line"><span class="built_in">console</span>.log(div.getAttribute(<span class="string">"class"</span>)); <span class="comment">//"bd"</span></div><div class="line"><span class="built_in">console</span>.log(div.getAttribute(<span class="string">"title"</span>)); <span class="comment">//"Body text"</span></div><div class="line"><span class="built_in">console</span>.log(div.getAttribute(<span class="string">"lang"</span>)); <span class="comment">//"en"</span></div><div class="line"><span class="built_in">console</span>.log(div.getAttribute(<span class="string">"dir"</span>)); <span class="comment">//"ltr"</span></div></pre></td></tr></table></figure>
+<p>替代：DOM本身的属性(自定义特性无法访问)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(div.id);    <span class="comment">//"myDiv"</span></div><div class="line"><span class="built_in">console</span>.log(div.my_special_attribute);    <span class="comment">//"undefined"(IE除外)</span></div><div class="line"><span class="built_in">console</span>.log(div.align);    <span class="comment">//“left”</span></div></pre></td></tr></table></figure>
+<p><strong>特殊特性：</strong></p>
+<ul>
+<li><strong>style属性</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>访问方式</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>div.getAttribute(“style”)</td>
+<td>CSS文本</td>
+</tr>
+<tr>
+<td>div.style</td>
+<td>对象</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>事件处理程序</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>访问方式</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>div.getAttribute(“onclick”)</td>
+<td>代码字符串</td>
+</tr>
+<tr>
+<td>div.onclick</td>
+<td>函数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3、设置特性</strong></p>
+<ul>
+<li><code>setAttribute()</code>方法<br><strong>用途：</strong>设置或创建特性值（可以自定义，HTML5要求data_前缀）<br><strong>参数（2）</strong>：要设置的特性名、值<br><strong>注意：</strong>特性名会同意被转成小写;IE7-有异常</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">div.setAttribute(<span class="string">"id"</span>,  <span class="string">"sometherId"</span>);</div><div class="line">div.setAttribute(<span class="string">"class"</span>,  <span class="string">"ft"</span>);</div><div class="line">div.setAttribute(<span class="string">"title"</span>,  <span class="string">"some other text"</span>);</div><div class="line">div.setAttribute(<span class="string">"lang"</span>,  <span class="string">"fr"</span>);</div><div class="line">div.setAttribute(<span class="string">"dir"</span>,  <span class="string">"rtl"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><code>removeAttribute()</code>方法<br><strong>用途：</strong>彻底删除元素的特性<br><strong>参数：</strong>特性名<br><strong>特点：</strong>不常用<br><strong>兼容性：</strong>IE6-不支持</li>
+</ul>
+<p><strong>4、attributes属性</strong></p>
+<p><strong>用途：</strong>包含元素的特性,适合用来遍历元素的特性<br><strong>特点：</strong>Element节点独有<br><strong>值：</strong>NamedNodeMap(类似NodeList)</p>
+<p><strong>NamedNodeMap</strong>对象</p>
+<ul>
+<li><code>getNameItem(name):</code>   返回nodeName属性等于name的节点</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> id = element.attributes.getNamedItem(<span class="string">"id"</span>).nodeVlaue;</div></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> id = element.attributes[<span class="string">'id'</span>].nodeValue;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>removeNamedItem(name):</code>    从列表中移除nodeName属性等于name的节点</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oldAttr = element.attributes.removeNamedItems(<span class="string">"id"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><code>setNamedItem(node):</code>  向列表中添加节点，以节点的nodeName属性为索引<br>注意：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.attributes.setNamedItem(newAttr);</div></pre></td></tr></table></figure>
+<ul>
+<li><code>item(pos):</code>   返回位于数字pos位置处的节点</li>
+</ul>
+<p><strong>应用：遍历attributes</strong></p>
+<p><strong>方式一：全部遍历</strong></p>
+<ul>
+<li>不能保证attributes中属性出现的顺序</li>
+<li>IE7-会返回元素所有的属性，包括未设定的</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outputAttributes</span>(<span class="params">element</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> paris = <span class="keyword">new</span> <span class="built_in">Array</span>(),</div><div class="line">  attrName,</div><div class="line">  attrValue,</div><div class="line">  i,</div><div class="line"> len;</div><div class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>,len=element.attrbutes.length; i&lt;len;i++)&#123;</div><div class="line">    attrName = element.attributes[i].nodeName;</div><div class="line">    attrValue = element.attrbutes[i].nodeValue;</div><div class="line">    pairs.push(attrNames + <span class="string">"=\" "</span>+attrValue+<span class="string">"\""</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> pairs.join(<span class="string">" "</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>方式二：只遍历设置了值的属性</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outputAttributes</span>(<span class="params">element</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> paris = <span class="keyword">new</span> <span class="built_in">Array</span>(),</div><div class="line">  attrName,</div><div class="line">  attrValue,</div><div class="line">  i,</div><div class="line"> len;</div><div class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>,len=element.attrbutes.length; i&lt;len;i++)&#123;</div><div class="line">    attrName = element.attributes[i].nodeName;</div><div class="line">    attrValue = element.attrbutes[i].nodeValue;</div><div class="line">    <span class="keyword">if</span>(eleement.attributes[i].specified)&#123;</div><div class="line">      pairs.push(attrNames + <span class="string">"=\" "</span>+attrValue+<span class="string">"\""</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> pairs.join(<span class="string">" "</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>5、创建元素</strong></p>
+<ul>
+<li><code>document.createElement()</code>方法<br><strong>用途：</strong>创建节点（会同时设置ownerDocument）<br><strong>参数：</strong>标签名（HTML中不区分大小写；XML和XHTML中区分），IE允许传入完整的元素标签<br><strong>返回值：</strong>创建的节点<br><strong>注意：</strong>将新元素添加到DOM树种才会影响浏览器的显示</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line">div.id = <span class="string">"myNewDiv"</span>;</div><div class="line">div.className = <span class="string">"box"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(div);</div></pre></td></tr></table></figure>
+<p><strong>附：</strong>IE允许传入完整元素标签</p>
+<p><strong>用途：</strong>通过指定完整的标签，避开IE7-动态创建元素的某些问题（仅在使用标签名作参数给IE7带来问题时使用）</p>
+<ul>
+<li>不能设置动态创建的iframe元素的name特性</li>
+<li>不能通过表单的reset()方法重设动态创建的<code>&lt;input&gt;</code>元素</li>
+<li>动态创建的type特性值为“reset”的button元素无法重设表单</li>
+<li>动态创建的一批name相同的单选按钮彼此毫无关系</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"&lt;div id='myNewDiv' class='box'&gt;&lt;/div&gt;"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(client.bowser.ie &amp;&amp; client.browser.ie&lt;=<span class="number">7</span>)&#123;</div><div class="line">  <span class="comment">//创建一个带name特性的iframe元素</span></div><div class="line">  <span class="keyword">var</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">"&lt;iframe name=\"myFrame\"&gt;&lt;/iframe&gt;"</span>);</div><div class="line">  <span class="comment">//创建input元素</span></div><div class="line">   <span class="keyword">var</span> input = <span class="built_in">document</span>.createElement(<span class="string">"&lt;input type=\"checkbox\"&gt;"</span>);</div><div class="line">  <span class="comment">//创建button元素</span></div><div class="line">   <span class="keyword">var</span> button = <span class="built_in">document</span>.createElement(<span class="string">"&lt;button type=\"reset\"&gt;&lt;/button&gt;"</span>);</div><div class="line">  <span class="comment">//创建单选按钮</span></div><div class="line">   <span class="keyword">var</span> radio1 = <span class="built_in">document</span>.createElement(<span class="string">"&lt;input type=\"radio\" name=\"choice\" value=\"1\"&gt;"</span>);</div><div class="line">   <span class="keyword">var</span> radio2 = <span class="built_in">document</span>.createElement(<span class="string">"&lt;input type=\"radio\" name=\"choice\" value=\"1\"&gt;"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>6、元素的子节点</strong></p>
+<ul>
+<li><strong>遍历子节点</strong><br>问题：IE会将空白符也解析为子节点</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>解决：遍历时判断节点的类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,len=element.childNodes.length; i&lt; len;i++)&#123;</div><div class="line">  <span class="keyword">if</span>(element.childNodes[i].nodeType == <span class="number">1</span>)&#123;</div><div class="line">    <span class="comment">//执行某些操作</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>通过标签名取得子节点</strong><br>注意：会递归各个层次获取子节点</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"myList"</span>):</div><div class="line"><span class="keyword">var</span> items = ul.getElementByTagName(<span class="string">"li"</span>);</div></pre></td></tr></table></figure>
+<h3 id="10-1-4-Text类型"><a href="#10-1-4-Text类型" class="headerlink" title="10.1.4    Text类型"></a>10.1.4    Text类型</h3><p><strong>节点特征</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>“# text”</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>包含的文本内容</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>Element</td>
+</tr>
+<tr>
+<td>5</td>
+<td>childNodes</td>
+<td>不支持子节点</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要属性</strong></p>
+<ul>
+<li><code>nodeValue</code>属性、<code>data</code>属性：Text节点中包含的文本</li>
+<li><code>length</code>属性：包含文本的字符的数目（nodeValue.length、data.length）</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li><code>appendData(text)</code>：将text添加到节点的末尾</li>
+<li><code>deleteDate(offset, count)</code>：从 offset 指定的位置开始删除 count 个字符</li>
+<li><code>insertData(offset, text)</code>：重 offset 指定的位置插入text</li>
+<li><code>replaceData(offset, count, text)</code>：用 text 替换从 offset 指定的位置开始到 offset+count 为止处的文本</li>
+<li><code>splitText(offset)</code>：从 offset 指定的位置开始将文本节点分成两个文本节点</li>
+<li><code>substringData(offset,count)</code>:  提取从 offset 指定的位置开始到 offset+count 位置处的字符串</li>
+</ul>
+<p><strong>注意：默认情况下，每个可以包含内容的元素最多只能有一个文本节点 </strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = docuemnt.getElementByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> textNode = div.firstChild.nodeValue = <span class="string">"Some &lt;strong&gt;other&lt;/strong&gt; message"</span>;</div></pre></td></tr></table></figure>
+<p><strong>1、创建文本节点</strong></p>
+<ul>
+<li><code>document.createTextNode()</code>方法<br><strong>用途：</strong>创建新文本节点（会同时设置ownerDocument属性）<br><strong>参数：</strong>要插入节点中的文本（会按照HTML或XML的格式进行编码）<br><strong>注意：</strong>只有添加到文档树中后参会被渲染;两个同胞且相邻的文本节点会被连起来显示。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">element.className  =<span class="string">"message"</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello World!"</span>);</div><div class="line">element.appendChild(textNode);</div><div class="line"></div><div class="line"><span class="built_in">document</span>.body.appendChild(element);</div></pre></td></tr></table></figure>
+<p><strong>2、规范化文本节点</strong></p>
+<ul>
+<li><code>normalize()</code>方法<br><strong>调用：</strong>定义在Node类型中，所有节点类型都可以调用<br><strong>用途：</strong>合并文本子节点为一个文本子节点<br><strong>注意：</strong>某些情况下IE6会崩溃（已经修复？）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建父节点</span></div><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">element.className = <span class="string">"message"</span>;</div><div class="line"><span class="comment">//第一个文本子节点</span></div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);</div><div class="line">element.appendChild(textNode);</div><div class="line"><span class="comment">//第二个文本子节点</span></div><div class="line"><span class="keyword">var</span> anotherTextNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Yippee!"</span>);</div><div class="line">element.appendChild(anotherTextNode);</div><div class="line"><span class="comment">//将父节点添加进文档树</span></div><div class="line"><span class="built_in">document</span>.body.appendChild(element);</div><div class="line">alert(element.childNodes.length);  <span class="comment">//2</span></div><div class="line">element.normalize();</div><div class="line">alert(element.childBodes.length);    <span class="comment">//1</span></div><div class="line">alert(element.firstChild.nodeValue);    <span class="comment">//"Hello world!Yippee!"</span></div></pre></td></tr></table></figure>
+<p><strong>3、分割文本节点</strong></p>
+<ul>
+<li><code>spliteText()</code>方法<br><strong>调用：</strong>定义在Node类型中，所有节点类型都可以调用<br><strong>用途：</strong>按照指定的位置分割nodeValue的值，原来的节点包含从开始到指定位置的文本<br><strong>参数：</strong>分隔文本的位置<br><strong>返回值：</strong>包含指定位置到结尾文本的新文本节点<br><strong>注意：</strong>并不会导致页面有任何变化</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">element.className = <span class="string">"message"</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);</div><div class="line">element.appendChild(textNode);</div><div class="line"><span class="built_in">document</span>.body.append(element);</div><div class="line"><span class="keyword">var</span> newNode = element.firstChild.splitText(<span class="number">5</span>);</div><div class="line"><span class="built_in">console</span>.log(element.firstChild.nodeValue);    <span class="comment">//"Hello world!"</span></div><div class="line"><span class="built_in">console</span>.log(newNode.nodeValue);    <span class="comment">//" world!"</span></div><div class="line"><span class="built_in">console</span>.log(element.childNodes.length);    <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<h3 id="10-1-5-Comment类型"><a href="#10-1-5-Comment类型" class="headerlink" title="10.1.5  Comment类型"></a>10.1.5  Comment类型</h3><p><strong>节点特征</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>“# comment”</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>注释的内容</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>Docuemnt或Element</td>
+</tr>
+<tr>
+<td>5</td>
+<td>childNodes</td>
+<td>不支持子节点</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要属性</strong></p>
+<ul>
+<li><code>nodeValue、data</code>：取得注释的内容</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv"</span>&gt;</span><span class="comment">&lt;!--A comment--&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="keyword">var</span> comment = div.firstChild;</div><div class="line">alert(comment.data);    <span class="comment">//"A comment"</span></div></pre></td></tr></table></figure>
+<p><strong>方法（和 Text 继承自相同基类，拥有除 splitText() 之外的所有字符串操作方法）</strong></p>
+<ul>
+<li><code>document.createComment()</code>方法<br>用途：创建注释节点<br>参数：注释字符串<br>注意：浏览器不识别<code>&lt;/html&gt;</code>之后的注释节点</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> comment = <span class="built_in">document</span>.createComment(<span class="string">"A comment"</span>);</div></pre></td></tr></table></figure>
+<p><strong>兼容性：</strong></p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>对注释节点的处理</th>
+<th>形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firefox、Safari、Chrome、Opera</td>
+<td>Comment</td>
+<td>可以访问其构造函数和原型</td>
+</tr>
+<tr>
+<td>IE8</td>
+<td>标签名为”!”的元素</td>
+<td>通过getElementByTagName()访问</td>
+</tr>
+<tr>
+<td>IE9</td>
+<td>HTMLCommentElement</td>
+</tr>
+</tbody>
+</table>
+<h3 id="10-1-6-CDATASelection类型"><a href="#10-1-6-CDATASelection类型" class="headerlink" title="10.1.6  CDATASelection类型"></a>10.1.6  CDATASelection类型</h3><p><strong>节点特征</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>“# cdata-section”</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>CDATA区域中的内容</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>Docuemnt或Element</td>
+</tr>
+<tr>
+<td>5</td>
+<td>childNodes</td>
+<td>不支持子节点</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong></p>
+<ul>
+<li>多数浏览器会把CDATA区域错误地解析为Comment或Element</li>
+<li>只能出现在XML文档</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv"</span>&gt;</span>![CDATA[This is some content.]]<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>方法</strong></p>
+<ul>
+<li><code>document.createCDataSelection()</code>方法<br>用途：创建CDATA区域<br>参数：传入节点的内容</li>
+</ul>
+<h3 id="10-1-7-DocumentType类型"><a href="#10-1-7-DocumentType类型" class="headerlink" title="10.1.7 DocumentType类型"></a>10.1.7 DocumentType类型</h3><blockquote>
+<p>DocumentType 包含着与文档的 doctype 有关的所有信息。支持的浏览器会把 DocumentType 对象保存在 document.doctype 中。</p>
+</blockquote>
+<p><strong>节点特征</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>doctype 的名称</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>null</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>Docuemnt</td>
+</tr>
+<tr>
+<td>5</td>
+<td>childNodes</td>
+<td>不支持子节点</td>
+</tr>
+</tbody>
+</table>
+<p><strong>属性</strong></p>
+<ul>
+<li><strong>name:</strong>  文档类型的名称，也就是&lt;!DOCTYPE之后的文本</li>
+<li><strong>entities: </strong> 由文档类型描述的实体的NamedNodeMap对象</li>
+<li><strong>notations:</strong>  由文档类型描述的符号的NamedNodeMap对象</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.doctype.name);    <span class="comment">//"HTML"</span></div></pre></td></tr></table></figure>
+<p><strong>兼容性</strong></p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>对DocumentType的支持</th>
+<th>document.doctype的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE8-</td>
+<td>不支持</td>
+<td>null</td>
+</tr>
+<tr>
+<td>IE9</td>
+<td>不支持</td>
+<td>正确赋值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="10-1-8-DocmentFragment类型"><a href="#10-1-8-DocmentFragment类型" class="headerlink" title="10.1.8  DocmentFragment类型"></a>10.1.8  DocmentFragment类型</h3><p><strong>文档片段介绍</strong></p>
+<ul>
+<li><strong>说明：</strong>只有该类型没有对应的标记。是一种“轻量级”的文档，可以包含并控制节点，但不会像完整的文档那样占用额外的资源。</li>
+<li><strong>用途：</strong>不能把文档片段直接添加到文档，但可以将它作为一个“仓库”来使用，即可以在里面保存将来可能添加到文档中的节点。文档本身永远不会成为文档书的一部分。</li>
+</ul>
+<p><strong>节点特征</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>11</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>“# docuement-frafment”</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>null</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>null</td>
+</tr>
+<tr>
+<td>5</td>
+<td>childNodes</td>
+<td>Element、ProcessingInstruction、Comment、Text、CDATASection、EntityReference</td>
+</tr>
+</tbody>
+</table>
+<p><strong>创建</strong></p>
+<ul>
+<li><code>document.createDocumentFragment()</code>方法<br><strong>用途：</strong>创建文档片段<br><strong>注意：</strong>一个节点append文档片段会导致文档片段中的所有节点都被移动到这个节点</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDoocumentFragment();</div><div class="line"><span class="keyword">var</span> ul =  <span class="built_in">document</span>.getElementById(<span class="string">"myList"</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="literal">null</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++)&#123;</div><div class="line">  li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">  li.appendChild(docuemnt.createTextNode(<span class="string">"Item "</span>+(i+<span class="number">1</span>)));</div><div class="line">  fragment.appendChild(li);</div><div class="line">&#125;</div><div class="line">ul.appendChild(fragment);</div></pre></td></tr></table></figure>
+<h3 id="10-1-9-Attr-类型"><a href="#10-1-9-Attr-类型" class="headerlink" title="10.1.9  Attr 类型"></a>10.1.9  Attr 类型</h3><p><strong>注意</strong><br>1) 不被认为是DOM树的一部分</p>
+<p><strong>节点特征</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nodeType</td>
+<td>11</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nodeName</td>
+<td>特性的名称</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nodeValue</td>
+<td>特性的值</td>
+</tr>
+<tr>
+<td>4</td>
+<td>parentNode</td>
+<td>null</td>
+</tr>
+<tr>
+<td>5</td>
+<td>子节点</td>
+<td>HTML中不支持子节点、XML中可以是Text或EntityReference</td>
+</tr>
+</tbody>
+</table>
+<p><strong>属性</strong></p>
+<ul>
+<li><strong>nodeName、name：</strong>特性名称</li>
+<li><strong>nodeValue、value</strong>：特性值</li>
+<li><strong>specified</strong>：代码中指定了值true;否则为false<br>创建</li>
+<li><strong>document.createAttribute()</strong>方法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> attr = <span class="built_in">document</span>.createAttribute(<span class="string">"align"</span>);</div><div class="line">attr.value = <span class="string">"left"</span>;</div><div class="line">element.setAttribute(attr);</div><div class="line">alert(element.attributes[<span class="string">"align"</span>].value);    <span class="comment">//"left"</span></div><div class="line">alert(element.getAttributeNode(<span class="string">"align"</span>).value);    <span class="comment">//"left"</span></div><div class="line">alert(element.getAttribute(<span class="string">"align"</span>));    <span class="comment">//"left"</span></div></pre></td></tr></table></figure>
+<p><strong>获得/设置特性</strong></p>
+<ul>
+<li><code>getAttrbuteNode()</code>方法<br>用途：获得特性节点<br>参数：特性名称<br>返回值：特性节点<br>定义于：Node</li>
+<li><code>setAttrbuteNode()</code>方法<br>用途：设置特性<br>参数：特性节点<br>定义于：Node</li>
+</ul>
+<h2 id="10-2-DOM操作技术"><a href="#10-2-DOM操作技术" class="headerlink" title="10.2 DOM操作技术"></a>10.2 DOM操作技术</h2><h3 id="10-2-1-动态脚本"><a href="#10-2-1-动态脚本" class="headerlink" title="10.2.1 动态脚本"></a>10.2.1 动态脚本</h3><p>说明：页面加载时不存在,但将来的某一时刻通过修改DOM动态添加的脚本。</p>
+<ul>
+<li><strong>方式一：插入外部文件</strong><br><strong>特点：</strong>元素被加入到页面中时才会开始加载<br>案例一：插入到body最后面<br>目标</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span> = <span class="string">"client.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">  script.type = <span class="string">"text/script"</span>;</div><div class="line">  script.src = url;</div><div class="line">  <span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div><div class="line">loadScript(<span class="string">"client.js"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>方式二：在页面中插入JS代码</strong><br><strong>特点：</strong>脚本执行后立即可用，将在全局作用域中执行<br><strong>目标</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span><span class="params">()</span></span>&#123;</div><div class="line">    alert(<span class="string">"hi"</span>);</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>实现1：IE会出错</strong>（IE将script视为一个特殊的元素，不允许DOM访问其子节点）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script  =<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>));</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
+<p><strong>实现2：IE不会有问题，但Safari3.0-不能正确支持text属性</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script  =<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.text = <span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
+<p><strong>实现3：兼容所有浏览器</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params">code</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">  script.type = <span class="string">""</span>text/javascript;</div><div class="line"> <span class="keyword">try</span>&#123;</div><div class="line">    script.appendChild(<span class="built_in">document</span>.createTextNode(code));</div><div class="line">  &#125;<span class="keyword">catch</span>(ex)&#123;</div><div class="line">    script.text = code;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div><div class="line">loadScriptString(<span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>);</div></pre></td></tr></table></figure>
+<h3 id="10-2-2-动态样式"><a href="#10-2-2-动态样式" class="headerlink" title="10.2.2 动态样式"></a>10.2.2 动态样式</h3><p><strong>注意</strong></p>
+<ul>
+<li>必需将<code>&lt;link&gt;</code>元素添加到<code>&lt;head&gt;</code>元素中才能保证所有浏览器行为一致</li>
+<li>异步加载</li>
+</ul>
+<p><strong>方式一：插入外部文件</strong><br>    插入目标</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span> = <span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span> = <span class="string">"styles.css"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyles</span>(<span class="params">url</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</div><div class="line">  link.rel = <span class="string">"stylesheet"</span>;</div><div class="line">  link.type = <span class="string">"tet/css"</span>;</div><div class="line">  link.href = url;</div><div class="line">  <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">  head.appendChild(link);</div><div class="line">&#125;</div><div class="line">loadStyles(<span class="string">"style.css"</span>);</div></pre></td></tr></table></figure>
+<p><strong>方式二：插入包含嵌入式CSS的style节点(解决IE不允许访问style的子节点的问题)</strong><br>    插入目标</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>:red;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>实现1:  未解决IE不能访问style子节点的问题</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span>(<span class="params">css</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> style = <span class="built_in">document</span>.creatEllement(<span class="string">"style"</span>);</div><div class="line">  style.type=<span class="string">"text/css"</span>;</div><div class="line">  style.appendChild(<span class="built_in">document</span>.createTextNode(css));</div><div class="line">  <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];</div><div class="line">  head.appendChild(style);</div><div class="line">&#125;</div><div class="line">loadStyleString(<span class="string">"body&#123;background:red;&#125;"</span>);</div></pre></td></tr></table></figure>
+<p><strong>实现2：针对IE访问元素的styleSheet.cssText</strong><br>        注意：重用同一个style元素进行再次设置或设置为空字符串可能呆滞浏览器崩溃。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span>(<span class="params">css</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> style = <span class="built_in">document</span>.creatEllement(<span class="string">"style"</span>);</div><div class="line">  style.type=<span class="string">"text/css"</span>;</div><div class="line">  <span class="keyword">try</span>&#123;</div><div class="line">    style.appendChild(<span class="built_in">document</span>.createTextNode(css));</div><div class="line">  &#125;<span class="keyword">catch</span>(ex)&#123;</div><div class="line">    style.styleSheet.cssText = css;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];</div><div class="line">  head.appendChild(style);</div><div class="line">&#125;</div><div class="line">loadStyleString(<span class="string">"body&#123;background:red;&#125;"</span>);</div></pre></td></tr></table></figure>
+<h3 id="10-2-3-操作表格"><a href="#10-2-3-操作表格" class="headerlink" title="10.2.3 操作表格"></a>10.2.3 操作表格</h3><p><strong>HTML DOM</strong>还为<strong>table</strong>、<strong>tbody</strong>、<strong>tr</strong>元素添加了一些属性和方法<br>1) <code>table</code></p>
+<ul>
+<li><strong>caption：</strong>保存着对caption元素（如果有）的指针</li>
+<li><strong>tBodies：</strong>一个tbody元素的HTMLCollection</li>
+<li><strong>tFoot：</strong>保存着tfoot元素（如果有）的指针</li>
+<li><strong>tHead：</strong>保存着对thead元素（如果有）的指针</li>
+<li><strong>rows：</strong>是一个表格中所有行的HTMLCollection</li>
+<li><strong>createTHead()：</strong>创建thead元素，将其放在表格中，返回引用</li>
+<li><strong>createTFoot()：</strong>创建tfoot元素，将其放在表格中，返回引用</li>
+<li><strong>createCaption()：</strong>创建Caption元素，将其放在表格中，返回引用</li>
+<li><strong>deleteTHead()：</strong>删除thead元素</li>
+<li><strong>deleteTFoot()：</strong>删除tfoot元素</li>
+<li><strong>deleteCaption()：</strong>删除caption元素</li>
+<li><strong>deleteRow(pos)：</strong>删除指定位置的行</li>
+<li><strong>insertRow(pos)：</strong>向rows集合中的指定位置插入一行</li>
+</ul>
+<p>2) <code>tbody</code></p>
+<ul>
+<li><strong>rows：</strong>表格中所有行的HTMLCollection</li>
+<li><strong>deleteRows(pos)：</strong>删除指定位置的行</li>
+<li><strong>insertRow(pos)：</strong>向rows集合中的指定位置插入一行，返回新插入行的引用</li>
+</ul>
+<p>3) <code>tr</code></p>
+<ul>
+<li><strong>cells：</strong>保存着tr元素中单元格的HTMLCollection</li>
+<li><strong>deleteCell(pos)：</strong>删除指定位置的单元格</li>
+<li><strong>insertCell(pos)：</strong>项cells集合中指定位置插入一个单元格，返回对心插入单元格的引用</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"100%"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 1,1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 2,1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 1,2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 2,2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建table</span></div><div class="line"><span class="keyword">var</span> table = <span class="built_in">document</span>.createElement(<span class="string">"table"</span>);</div><div class="line">table.border = <span class="number">1</span>;</div><div class="line">table.width =  <span class="string">"100%"</span>;</div><div class="line"><span class="comment">//创建tbody</span></div><div class="line"><span class="keyword">var</span> tbody = <span class="built_in">document</span>.createElement(<span class="string">"tbody"</span>);</div><div class="line">table.appendChild(tbody);</div><div class="line"><span class="comment">//创建第一行</span></div><div class="line">tbody.insertRow(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].insertCell(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].cells[<span class="number">0</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 1,1"</span>));</div><div class="line">tbody.rows[<span class="number">0</span>].insertCell(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].cells[<span class="number">1</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 2,1"</span>));</div><div class="line"><span class="comment">//创建第二行</span></div><div class="line">tbody.insertRow(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].insertCell(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].cells[<span class="number">0</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 1,2"</span>));</div><div class="line">tbody.rows[<span class="number">1</span>].insertCell(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].cells[<span class="number">1</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 2,2"</span>));</div></pre></td></tr></table></figure>
+<h3 id="10-2-4-使用-NodeList"><a href="#10-2-4-使用-NodeList" class="headerlink" title="10.2.4    使用 NodeList"></a>10.2.4    使用 NodeList</h3><blockquote>
+<p><strong>NodeList</strong> 和 <strong>NamedNodeMap</strong> 和 <strong>HTMLCollection</strong> 都是“动态的”。</p>
+</blockquote>
+<ul>
+<li>减少对 <code>NodeList</code> 的访问，或将 <code>NodeList</code> 的值缓存起来，因为每次访问都会运行一次基于文档的查询；</li>
+<li>遍历 <code>NodeList</code> 最好将其 <code>length</code>属性值保存在另外一个变量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> divs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"div"</span>),</div><div class="line">  i,</div><div class="line">  len,</div><div class="line">  div;</div><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>,len = divs.length;i&lt;len; i++)&#123;</div><div class="line">  div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">  <span class="built_in">document</span>.body.append(div);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/JavaScript高级程序设计（第3版）/" rel="tag"># JavaScript高级程序设计（第3版）</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/14/JS高级程序设计 9 客户端检测/" rel="next" title="客户端检测">
+                <i class="fa fa-chevron-left"></i> 客户端检测
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/JS高级程序设计 11 DOM 扩展/" rel="prev" title="DOM扩展">
+                DOM扩展 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Emily" />
+          <p class="site-author-name" itemprop="name">Emily</p>
+           
+              <p class="site-description motion-element" itemprop="description">我学习 WEB 前端开发以来的笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#10-章-DOM"><span class="nav-text">10 章 DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1-节点层次"><span class="nav-text">10.1 节点层次</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-1-Node类型"><span class="nav-text">10.1.1 Node类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-2-Document类型"><span class="nav-text">10.1.2    Document类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-3-Element类型"><span class="nav-text">10.1.3 Element类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-4-Text类型"><span class="nav-text">10.1.4    Text类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-5-Comment类型"><span class="nav-text">10.1.5  Comment类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-6-CDATASelection类型"><span class="nav-text">10.1.6  CDATASelection类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-7-DocumentType类型"><span class="nav-text">10.1.7 DocumentType类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-8-DocmentFragment类型"><span class="nav-text">10.1.8  DocmentFragment类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-9-Attr-类型"><span class="nav-text">10.1.9  Attr 类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-DOM操作技术"><span class="nav-text">10.2 DOM操作技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-1-动态脚本"><span class="nav-text">10.2.1 动态脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-2-动态样式"><span class="nav-text">10.2.2 动态样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-3-操作表格"><span class="nav-text">10.2.3 操作表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-4-使用-NodeList"><span class="nav-text">10.2.4    使用 NodeList</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emily</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
